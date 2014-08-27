@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <ImageView
+        android:id="@+id/imageViewSJ_Gob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imgViewBtnAlert"
+        android:contentDescription="@string/text_context_icon_mg"
+        android:src="@drawable/boton_mg_icon" />
+
+    <Button
+        android:id="@+id/btnSelectContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/text_select_contact" />
+
+    <Button
+        android:id="@+id/btnViewContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSelectContact"
+        android:layout_alignRight="@+id/btnSelectContact"
+        android:layout_below="@+id/btnSelectContact"
+        android:text="@string/text_view_contact" />
+
+    <Button
+        android:id="@+id/btnGoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnViewContacts"
+        android:layout_alignRight="@+id/btnViewContacts"
+        android:layout_below="@+id/btnViewContacts"
+        android:text="@string/text_menu_main" />
+
+    <ImageView
+        android:id="@+id/imgViewBtnAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/text_context_icon_gov_sj"
+        android:src="@drawable/boton_sj_icon" />
+
+</RelativeLayout>
