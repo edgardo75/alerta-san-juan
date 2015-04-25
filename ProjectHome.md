@@ -1,0 +1,1 @@
+envio de alerta de emergencia a telefonos celulares que tiene guardado la aplicación de policia y contactos seleccionados por el usuario de la aplicacion.
