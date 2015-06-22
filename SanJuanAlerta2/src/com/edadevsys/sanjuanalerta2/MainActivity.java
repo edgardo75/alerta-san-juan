@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
 	
 	private ImageView imgSendSMS = null;		
 	
-	private DataBaseHandler db = null;	
+	private static DataBaseHandler db = null;	
 	
 	public PackageManager packageManager;
 	
@@ -150,7 +150,7 @@ public class MainActivity extends Activity {
 		//***************************************************************************************
 		
 		
-		db = new DataBaseHandler(MainActivity.this);			
+		db = DataBaseHandler.getDataBaseInstance(MainActivity.this);			
 			
 			initUI();
 			
@@ -158,71 +158,78 @@ public class MainActivity extends Activity {
 		
 			addListenerOnButtonAlert();
 		
-			if(provider!=null){				
-				
-				muestraLocaliz(locationGral);
-				
-				}else{
-					
-						final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-						
-						
-									alertDialog.setTitle(getString(R.string.text_change_config));
-									
-									
-										alertDialog.setMessage(getString(R.string.text_enabled_question_location));						
-									
-											alertDialog.setCancelable(false);
-									
-											alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Si",
-											
-					                        new DialogInterface.OnClickListener() {
-										
-					                            public void onClick(DialogInterface dialog,
-					                            		
-					                                    int which) {
-					                            	
-					                            				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-					                            				
-					                            						if(intent.resolveActivity(getPackageManager()) != null){
-					                            							
-					                            							startActivityForResult(intent, REQUEST_CODE);
-					                            							
-					                          						}                     	
-					                            }
-					                        });
-									alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
-											
-					                        new DialogInterface.OnClickListener() {
-										
-					                            public void onClick(DialogInterface dialog,
-					                            		
-					                                    int which) {
-					                            	
-					                                alertDialog.cancel();
-					                                
-					                           
-					                            }
-					                        });
-									alertDialog.setOnKeyListener(new OnKeyListener() {
-										
-										@Override
-										public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {	
-											
-											if(keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_ESCAPE){
-												//Do Nothing
-											}
-											
-											return false;
-										}
-									});
-									
-									alertDialog.show();
-			}
+			showAlertDialogCondition();
 				
 	}
 	
-	
+	private void showAlertDialogCondition(){
+		//*******************************
+		if(provider!=null){				
+			
+			muestraLocaliz(locationGral);
+			
+			}else{
+				
+					final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+					
+					
+								alertDialog.setTitle(getString(R.string.text_change_config));
+								
+								
+									alertDialog.setMessage(getString(R.string.text_enabled_question_location));						
+								
+										alertDialog.setCancelable(false);
+								
+										alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Si",
+										
+				                        new DialogInterface.OnClickListener() {
+									
+				                            public void onClick(DialogInterface dialog,
+				                            		
+				                                    int which) {
+				                            	
+				                            				Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				                            				
+				                            						if(intent.resolveActivity(getPackageManager()) != null){
+				                            							
+				                            							startActivityForResult(intent, REQUEST_CODE);
+				                            							
+				                          						}                     	
+				                            }
+				                        });
+								alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+										
+				                        new DialogInterface.OnClickListener() {
+									
+				                            public void onClick(DialogInterface dialog,
+				                            		
+				                                    int which) {
+				                            	
+				                                alertDialog.cancel();
+				                                
+				                           
+				                            }
+				                        });
+								alertDialog.setOnKeyListener(new OnKeyListener() {
+									
+									@Override
+									public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {	
+										
+										if(keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_ESCAPE){
+											//Do Nothing
+										}
+										
+										return false;
+									}
+								});
+								
+								alertDialog.show();
+		}
+		
+		//*******************************
+		
+		
+	}
 	
 	private void muestraLocaliz(Location locationGral) {
 		
@@ -248,7 +255,7 @@ public class MainActivity extends Activity {
 
 	
 
-	private void initCriteria(){
+	private void initializeCriteriaLatitudLongitud(){
 		
 		criteria = new Criteria();
 		
@@ -272,7 +279,7 @@ public class MainActivity extends Activity {
 			// retrieve LocationManager from GetSystemServices
 				locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 			
-					initCriteria();
+					initializeCriteriaLatitudLongitud();
 			
 						provider = locationManager.getBestProvider(criteria, false);
 			 
@@ -1054,7 +1061,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 									configChangeRestore = true;
 								}
 									
-									initCriteria();
+									initializeCriteriaLatitudLongitud();
 								
 							   provider = locationManager.getBestProvider(criteria, false);
 								
