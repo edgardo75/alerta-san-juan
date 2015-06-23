@@ -34,20 +34,19 @@ public class ContactsAdapter extends BaseAdapter {
 		
 		this.context = context;
 		
-		mSparseBooleanArray = new SparseBooleanArray();
+		mSparseBooleanArray = new SparseBooleanArray(0);
 		
 		inflater =(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		contacts = DataBaseHandler.getDataBaseInstance(context).getAllContacts();
 		
 	}
-	public ContactsAdapter(Context context, LayoutInflater inflater,
-			
-			ArrayList<Contact> contacts) {
+	
+	public ContactsAdapter(Context context, LayoutInflater inflater,ArrayList<Contact> contacts) {
 		
 		super();
 		
-		mSparseBooleanArray = new SparseBooleanArray();
+		mSparseBooleanArray = new SparseBooleanArray(0);
 		
 			this.context = context;
 		
@@ -88,7 +87,7 @@ public class ContactsAdapter extends BaseAdapter {
 	}
 	public ArrayList<Contact> getAllItems(){
 		
-		List<Contact> mTempArrayContactsDb = DataBaseHandler.getDataBaseInstance(context).getAllContacts();
+		/*List<Contact> mTempArrayContactsDb = DataBaseHandler.getDataBaseInstance(context).getAllContacts();
 		
 		ArrayList<Contact> mTempArrayContact = new ArrayList<Contact>();
 		
@@ -96,24 +95,26 @@ public class ContactsAdapter extends BaseAdapter {
 			
 			mTempArrayContact.add(cn);
 			
-		}
+		}*/
 		
-		return mTempArrayContact;
+		return (ArrayList<Contact>) DataBaseHandler.getDataBaseInstance(context).getAllContacts();
 	}
 	public ArrayList<Contact> getChequedItems(){
 		
-		ArrayList<Contact> mTempArray = new ArrayList<Contact>();
+		ArrayList<Contact> mTempArrayChequed = new ArrayList<Contact>();
 		
-		for(int i = 0;i <contacts.size() ;i++){
+		
+		
+		for(int i = 0;i < contacts.size() ;i++){
 			
 			if( mSparseBooleanArray.get(i)){
 				
-				mTempArray.add(contacts.get(i));
+				mTempArrayChequed.add(contacts.get(i));
 			}
 			
 		}
 		
-		return mTempArray;
+		return mTempArrayChequed;
 	}
 	
 	public int dellAllRows(){

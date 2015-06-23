@@ -24,7 +24,7 @@
     <string name="title_activity_contact_main_list_app" >Contactos del telefono</string>
     <string name="ok" >Si</string>
     <string name="no" >No</string>
-    <string name="text_menu_main" >Menu Principal</string>
+    <string name="text_menu_main" >Atras</string>
     <string name="text_title_lat" >Lat:</string>
     <string name="text_title_long" >Long:</string>
     <string name="emergency_number_text" >Envío al 911:</string>

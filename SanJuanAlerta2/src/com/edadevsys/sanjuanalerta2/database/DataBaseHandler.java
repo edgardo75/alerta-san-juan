@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.edadevsys.sanjuanalerta2.model.Contact;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -38,11 +39,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	
 	//Select phone number
 	private static final String SELECT_PHONE_NUMBER = "SELECT * FROM "+TABLE_CONTACTS+" WHERE "+KEY_PH_NO+"=";
-	
-	
-	
-	
-	private static DataBaseHandler databaseinstance;
+		
+	private static DataBaseHandler databaseinstance = null;
 	
 
 	public DataBaseHandler(Context context) {
@@ -51,8 +49,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	}
 
 
-	public DataBaseHandler(Context context, String name, CursorFactory factory,
-			int version) {
+	public DataBaseHandler(Context context, String name, CursorFactory factory,int version) {
 		super(context, name, factory, version);
 		// TODO Auto-generated constructor stub
 	}
@@ -61,10 +58,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	public static DataBaseHandler getDataBaseInstance(Context context){
 		
 		if (databaseinstance==null){
-			databaseinstance= new DataBaseHandler(context.getApplicationContext());
+			databaseinstance = new DataBaseHandler(context.getApplicationContext());
 		}
-		return databaseinstance;
-		
+	
+		return databaseinstance;   
 	}
 
 	@Override
@@ -100,8 +97,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		
 		try {
 			
-			
-
 			cursor = db.rawQuery(SELECT_PHONE_NUMBER+ "'" +number+ "'", null);
 
 			cursor.moveToLast();
@@ -116,17 +111,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 			
 		 	
 			
-		} catch (SQLiteConstraintException e) {
-			retorno = false;
+		} catch (SQLiteConstraintException e) {			
 			Log.e(TAG,"The Number Exists class DataBaseHandler");
 		}finally{
-			
-			if(cursor != null){
-				cursor.close();
-			}
-			if(db !=null ){
-				db.close();
-			}
+			cursor.close();
+			db.close();			
 			return retorno;
 		}
 		
@@ -154,9 +143,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 			Log.e(TAG, "Error at the insert record");
 		}finally{
 			
-			if(db!=null){
-				db.close();
-			}
+			db.close();
+			
 		}
 			
 	}
@@ -179,6 +167,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	}
 	 
 	// Getting All Contacts
+	@SuppressWarnings("finally")
 	public List<Contact> getAllContacts() {
 		
 		List<Contact>contactList = new ArrayList<Contact>();
@@ -190,27 +179,34 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		
-		//looping through all rows and adding to list
-		if(cursor.moveToFirst()){
-			
-			do{
-				
-				Contact contact = new Contact();
-				
-				contact.setID(Integer.parseInt(cursor.getString(0)));
-				
-	            contact.setName(cursor.getString(1));
-	            
-	            contact.setPhoneNumber(cursor.getString(2));
-	            
-	            // Adding contact to list
-	            contactList.add(contact);				
-	            
-			}while(cursor.moveToNext());
-			
-		}
-		cursor.close();
-		return contactList;
+		try {
+				//looping through all rows and adding to list
+					if(cursor.moveToFirst()){
+						
+						do{
+							
+							Contact contact = new Contact();
+							
+							contact.setID(Integer.parseInt(cursor.getString(0)));
+							
+				            contact.setName(cursor.getString(1));
+				            
+				            contact.setPhoneNumber(cursor.getString(2));
+				            
+				            // Adding contact to list
+				            contactList.add(contact);				
+				            
+						}while(cursor.moveToNext());
+						
+					}
+		} catch (Exception e) {
+			Log.e(TAG, "Error read contact list");
+		}finally{
+			cursor.close();
+			return contactList;
+		}			
+		
+		
 	}
 	
 	
@@ -220,14 +216,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		
 		String countQuery = "SELECT * FROM " + TABLE_CONTACTS;
 		
-        SQLiteDatabase db = getReadableDatabase();
+        	SQLiteDatabase db = getReadableDatabase();
         
-        Cursor cursor = db.rawQuery(countQuery, null);
+        	Cursor cursor = db.rawQuery(countQuery, null);
         
-        int count = cursor.getCount();
-        cursor.close();
+        	int count = cursor.getCount();
+        
+        	cursor.close();
  
-        // return count
         return count;
 	}
 	// Updating single contact
@@ -252,8 +248,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 		
 		SQLiteDatabase db = getWritableDatabase();
 		
-		db.beginTransaction();
-		
+		db.beginTransaction();		
 	    
 	    db.execSQL(DELETE_ROW_TABLE+contact.getID());
 		

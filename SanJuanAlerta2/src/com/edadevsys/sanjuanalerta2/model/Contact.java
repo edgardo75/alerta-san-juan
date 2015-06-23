@@ -2,7 +2,7 @@ package com.edadevsys.sanjuanalerta2.model;
 
 public class Contact {
 	
-	//globals variables
+	//instance variable
 	int _id;
 	String _name;
 	String _phone_number;
