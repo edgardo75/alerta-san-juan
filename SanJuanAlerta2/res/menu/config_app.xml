@@ -1,17 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.edadevsys.sanjuanalerta2.ConfigAppActivity" >
+    tools:context="com.edadevsys.sanjuanalerta2.ConfigAppActivity">
 
     <item
-        android:id="@+id/menu_sms"          
-          android:title="@string/action_sms_menu" 
-        />      
-  
-   <item
-       android:id="@+id/menu_end"
-       android:title="@string/action_end_activity"
-       
-       />     
+        android:id="@+id/menu_sms"
+        android:title="@string/action_sms_menu" />
+
+    <item
+        android:id="@+id/menu_end"
+        android:title="@string/action_end_activity"
+
+        />
 
 </menu>

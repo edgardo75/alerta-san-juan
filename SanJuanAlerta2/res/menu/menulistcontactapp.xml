@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<item 
-	    android:id="@+id/menu_del_select_row"
-	    android:title="@string/action_del_row_selected"
-	    android:orderInCategory="5"   
-	    android:showAsAction="always|withText"
-    />
-	<item 
-	    android:id="@+id/menu_del_all"
-	    android:title="@string/action_del_all"
-	    android:orderInCategory="6"    
-	    android:showAsAction="always|withText"
-    />
-	<item 
-	    android:id="@+id/menu_return"
-	    android:title="@string/action_come_back"
-	    android:orderInCategory="7"    
-	    android:showAsAction="always|withText"
-    />    
+    <item
+        android:id="@+id/menu_del_select_row"
+        android:orderInCategory="5"
+        android:showAsAction="always|withText"
+        android:title="@string/action_del_row_selected" />
+    <item
+        android:id="@+id/menu_del_all"
+        android:orderInCategory="6"
+        android:showAsAction="always|withText"
+        android:title="@string/action_del_all" />
+    <item
+        android:id="@+id/menu_return"
+        android:orderInCategory="7"
+        android:showAsAction="always|withText"
+        android:title="@string/action_come_back" />
 
 </menu>

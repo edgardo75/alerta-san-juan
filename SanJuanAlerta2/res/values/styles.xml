@@ -13,25 +13,25 @@
     </style>
 
     <!-- Application theme. -->
-    <color name="custom_backgroud">#199DF5</color>    
+    <color name="custom_backgroud">#199DF5</color>
     <color name="custom_colorTextView">#FFFFFF</color>
     <color name="custom_colorTextHint">#FFD700</color>
-    <color name="menubg">#fceaea</color>
-    
-    
+    <color name="menubg">#585858</color>
+
+
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-         <item name="android:windowBackground">@color/custom_backgroud</item>
+        <item name="android:windowBackground">@color/custom_backgroud</item>
         <item name="android:textColor">@color/custom_colorTextView</item>
         <item name="android:textColorHint">@color/custom_colorTextHint</item>
         <item name="android:popupBackground">@color/menubg</item>
-        
+
         <!-- Panel attributes -->
         <!-- <item name="android:panelBackground">@drawable/menu_bg</item> -->
-        <item name="android:panelFullBackground">@drawable/menu_full_bg</item> 
-            <!--    <item name="android:panelColorBackground">#FF0000</item> -->
-        
+        <item name="android:panelFullBackground">@drawable/menu_full_bg</item>
+        <!--    <item name="android:panelColorBackground">#FF0000</item> -->
+
     </style>
-	<!-- <drawable name="menu_bg">#DDDAAA</drawable> -->
+    <!-- <drawable name="menu_bg">#DDDAAA</drawable> -->
     <drawable name="menu_full_bg">#119DCC</drawable>
 </resources>
