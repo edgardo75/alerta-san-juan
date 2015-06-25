@@ -21,9 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edadevsys.sanjuanalerta2.adapter.ContactsAdapter;
+import com.edadevsys.sanjuanalerta2.utils.AdminMenu;
 
 
-public class ContactList extends Activity {
+public class ContactList extends Activity implements AdminMenu {
 
     private static final String TAG = "ContactList.java";
 
@@ -109,7 +110,7 @@ public class ContactList extends Activity {
         delayMenu();
     }
 
-    private void delayMenu() {
+    public void delayMenu() {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 openOptionsMenu();
@@ -235,7 +236,6 @@ public class ContactList extends Activity {
 
             case R.id.menu_return:
 
-
                 finish();
 
                 return true;
@@ -290,7 +290,7 @@ public class ContactList extends Activity {
     }
 
     @SuppressWarnings("finally")
-    private int delAllContact() {
+    protected int delAllContact() {
         int retorno = 0;
         try {
 

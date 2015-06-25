@@ -29,7 +29,7 @@ import java.util.Map.Entry;
 
 public class MainActivityListContact extends Activity implements OnClickListener {
 
-    private static final String TAG = "MainActivityListContact.java";
+    private static final String TAG = "MaAcLiCo.java";
 
     ListView mListView = null;
 
@@ -162,7 +162,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
         } catch (Exception e) {
 
-            Log.e(TAG, "Error en MainActivityListContact MainActivityListContact");
+            Log.e(TAG, e.getMessage());
         } finally {
             mainCursor.close();
         }
@@ -341,7 +341,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
             } catch (Exception e) {
                 retorno = false;
-                Log.e(TAG, e.getMessage());
+                Log.e(TAG, "");
                 // TODO: handle exception
             }
             return retorno;

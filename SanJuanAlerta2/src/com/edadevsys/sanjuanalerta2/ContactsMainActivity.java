@@ -186,7 +186,7 @@ public class ContactsMainActivity extends Activity implements OnClickListener {
                 }
             }
         } catch (Exception e) {
-            Log.e(TAG, "Error in ActivityResult");
+            Log.e(TAG, "");
         } finally {
 
 

@@ -14,6 +14,8 @@ public class Validation {
     private static final String REQUIRED_MSG = "requerido";
     private static final String MESSAGE_ALERT_MSG = "Mensaje Alerta no permitido!!!";
     private static final String DATA_PERSONAL_MSG = "Dato opcional inválido!!!";
+    private static EditText editText;
+    private static boolean required;
 
     // call this method when you need to check email validation
     public static boolean isMessageAlert(EditText editText, boolean required) {
@@ -21,11 +23,13 @@ public class Validation {
     }
 
     public static boolean isDataPersonal(EditText editText, boolean required) {
+        Validation.editText = editText;
+        Validation.required = required;
         return isValidDataPersonal(editText, DATA_PERSONAL_REGEX, DATA_PERSONAL_MSG, required);
     }
 
     // return true if the input field is valid, based on the parameter passed
-    public static boolean isValid(EditText editText, String regex, String errMsg, boolean required) {
+    private static boolean isValid(EditText editText, String regex, String errMsg, boolean required) {
 
         String text = editText.getText().toString().trim();
         // clearing the error, if it was previously set by some other values

@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
 import com.edadevsys.sanjuanalerta2.model.Contact;
+import com.edadevsys.sanjuanalerta2.utils.AdminMenu;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -54,7 +55,7 @@ import java.util.List;
 import java.util.Locale;
 
 @SuppressLint("NewApi")
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AdminMenu {
 
     public static final String configSmsLocalFile = "conf1037";
     static final String STATE_LATITUD = "latitudValue";
@@ -352,15 +353,11 @@ public class MainActivity extends Activity {
 
 
         //***************************************************************************************************
-
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                openOptionsMenu();
-            }
-        }, 1000);
+        delayMenu();
 
 
     }
+
 
     @Override
     protected void onPause() {
@@ -567,7 +564,7 @@ public class MainActivity extends Activity {
                 return true;
 
 							/*case R.id.menu_view_contacts:
-								
+
 								int countContact = DataBaseHandler.getDataBaseInstance(MainActivity.this).getContactsCount();
 								
 								if(countContact>0){
@@ -953,6 +950,15 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             Log.e(TAG, "Error in method getGeoCodeFromLatLon class MainActivity");
         }
+    }
+
+    @Override
+    public void delayMenu() {
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                openOptionsMenu();
+            }
+        }, 1000);
     }
 //**********************************************************************************************************************************
 
