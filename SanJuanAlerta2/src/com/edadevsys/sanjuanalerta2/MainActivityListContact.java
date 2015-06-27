@@ -18,10 +18,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.edadevsys.sanjuanalerta2.adapter.MultiSelectionAdapter;
 import com.edadevsys.sanjuanalerta2.model.Contact;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -70,7 +68,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
         data = new HashMap<String, String>(0);
 
-        numbers = new HashSet<String>();
+        numbers = new HashSet<String>(0);
 
         getAllContacts();
 
@@ -317,7 +315,6 @@ public class MainActivityListContact extends Activity implements OnClickListener
             dialog.show();
         }
 
-        @SuppressWarnings("finally")
         @Override
         protected Boolean doInBackground(Void... params) {
             boolean retorno = false;

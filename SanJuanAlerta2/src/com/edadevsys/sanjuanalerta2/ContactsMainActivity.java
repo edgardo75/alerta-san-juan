@@ -25,6 +25,8 @@ public class ContactsMainActivity extends Activity implements OnClickListener {
     private Button btnViewContact = null;
     private Button btnGoHome = null;
     private String name;
+    private Uri contactUri;
+    private String[] projection;
 
     private String number;
 
@@ -110,89 +112,108 @@ public class ContactsMainActivity extends Activity implements OnClickListener {
 
             if (requestCode == PICK_CONTACT_REQUEST) {
 
-                // Make sure the request was successful
-                if (resultCode == RESULT_OK) {
-
-                    // Get the URI that points to the selected contact
-                    Uri contactUri = data.getData();
-                    // We only need the NUMBER column, because there will be only one row in the result
-                    // String[] projection = {Phone.NUMBER};
-
-                    // Perform the query on the contact to get the NUMBER column
-                    // We don't need a selection or sort order (there's only one result for the given URI)
-                    // CAUTION: The query() method should be called from a separate thread to avoid blocking
-                    // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
-                    // Consider using CursorLoader to perform the query.
-
-                    String[] projection = new String[]{
-                            ContactsContract.Contacts.DISPLAY_NAME,
-                            ContactsContract.Contacts.HAS_PHONE_NUMBER,
-                            ContactsContract.Contacts._ID,
-                    };
-
-                    cursor = getContentResolver()
-                            .query(contactUri, projection, ContactsContract.Contacts.HAS_PHONE_NUMBER + "=?",
-                                    new String[]{"1"}, null);
-
-                    if (cursor != null && cursor.moveToFirst()) {
-
-
-                        // Retrieve the phone number from the NUMBER column
-
-                        name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-
-                        String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-
-                        String[] projection1 = {Phone.NUMBER};
-
-                        // Perform the query on the contact to get the NUMBER column
-                        // We don't need a selection or sort order (there's only one result for the given URI)
-                        // CAUTION: The query() method should be called from a separate thread to avoid blocking
-                        // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
-                        // Consider using CursorLoader to perform the query.
-                        phone = getContentResolver()
-                                .query(Phone.CONTENT_URI, projection1, Data.CONTACT_ID + "=?", new String[]{String.valueOf(contactId)}, null);
-                        phone.moveToFirst();
-
-                        // Retrieve the phone number from the NUMBER column
-                        int column = phone.getColumnIndex(Phone.NUMBER);
-                        number = phone.getString(column);
-
-
-                        contact = new Contact();
-                        contact.setName(name);
-                        contact.setPhoneNumber(number);
-
-                        boolean isNumberExist = DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).isNumberExist(number);
-                        int count = DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).getContactsCount();
-
-
-                        if (count == 10) {
-                            Toast.makeText(ContactsMainActivity.this, getString(R.string.text_list_fill), Toast.LENGTH_LONG).show();
-                        } else {
-                            if (!(isNumberExist)) {
-
-                                DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).addContact(contact);
-                                Toast.makeText(ContactsMainActivity.this, getString(R.string.text_saved), Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                Toast.makeText(ContactsMainActivity.this, getString(R.string.text_saved_allready), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    } else {
-                        Toast.makeText(ContactsMainActivity.this, getString(R.string.text_no_phone_contact), Toast.LENGTH_SHORT).show();
-                    }
-
-                }
+				                // Make sure the request was successful
+				                if (resultCode == RESULT_OK) {
+				
+				                    // Get the URI that points to the selected contact
+				                    contactUri = data.getData();
+				                    // We only need the NUMBER column, because there will be only one row in the result
+				                    // String[] projection = {Phone.NUMBER};
+				
+				                    // Perform the query on the contact to get the NUMBER column
+				                    // We don't need a selection or sort order (there's only one result for the given URI)
+				                    // CAUTION: The query() method should be called from a separate thread to avoid blocking
+				                    // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
+				                    // Consider using CursorLoader to perform the query.
+				
+				                    projection = new String[]{
+				                            ContactsContract.Contacts.DISPLAY_NAME,
+				                            ContactsContract.Contacts.HAS_PHONE_NUMBER,
+				                            ContactsContract.Contacts._ID,
+				                    };
+				                    
+				                    obtainContacts(cursor, phone);
+				                   
+									
+				                }
             }
         } catch (Exception e) {
-            Log.e(TAG, "");
-        } finally {
+            Log.e(TAG, "onActivityResult");
+        } 
 
+                
+    }
 
+	private void obtainContacts(Cursor cursor, Cursor phone) {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+		
+				cursor = getContentResolver()
+                 .query(contactUri, projection, ContactsContract.Contacts.HAS_PHONE_NUMBER + "=?",
+                         new String[]{"1"}, null);
+
+			                    if (cursor != null && cursor.moveToFirst()) {
+			
+			
+			                        // Retrieve the phone number from the NUMBER column
+			
+			                        name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+			
+			                        String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+			
+			                        String[] projection1 = {Phone.NUMBER};
+			
+			                        // Perform the query on the contact to get the NUMBER column
+			                        // We don't need a selection or sort order (there's only one result for the given URI)
+			                        // CAUTION: The query() method should be called from a separate thread to avoid blocking
+			                        // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
+			                        // Consider using CursorLoader to perform the query.
+			                        phone = getContentResolver()
+			                                .query(Phone.CONTENT_URI, projection1, Data.CONTACT_ID + "=?", new String[]{String.valueOf(contactId)}, null);
+			                        phone.moveToFirst();
+			
+			                        // Retrieve the phone number from the NUMBER column
+			                        int column = phone.getColumnIndex(Phone.NUMBER);
+			                        number = phone.getString(column);
+			
+			
+			                        contact = new Contact();
+			                        contact.setName(name);
+			                        contact.setPhoneNumber(number);
+			
+			                        boolean isNumberExist = DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).isNumberExist(number);
+			                        int count = DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).getContactsCount();
+			
+			
+							                        	if (count == 10) {
+							                            Toast.makeText(ContactsMainActivity.this, getString(R.string.text_list_fill), Toast.LENGTH_LONG).show();
+							                        	} else {
+							                        			if (!(isNumberExist)) {
+							
+							                        					DataBaseHandler.getDataBaseInstance(ContactsMainActivity.this).addContact(contact);
+							                        					Toast.makeText(ContactsMainActivity.this, getString(R.string.text_saved), Toast.LENGTH_SHORT).show();
+							
+							                        			} else {
+							                        				Toast.makeText(ContactsMainActivity.this, getString(R.string.text_saved_allready), Toast.LENGTH_SHORT).show();
+							                        			}
+							                        	}
+			                    
+			                    } else {
+			                        Toast.makeText(ContactsMainActivity.this, getString(R.string.text_no_phone_contact), Toast.LENGTH_SHORT).show();
+			                    }
+			                    
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.e(TAG, "obtainContacts");
+		}finally{
             phone.close();
 
             cursor.close();
-        }
-    }
+		}           
+			
+               
+		
+	}
 }

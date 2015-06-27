@@ -5,4 +5,5 @@ package com.edadevsys.sanjuanalerta2.utils;
  */
 public interface AdminMenu {
     void delayMenu();
+    void menuBackGround();
 }

@@ -63,7 +63,8 @@ public class MainActivity extends Activity implements AdminMenu {
     static final String STATE_STREET = "streetValue";
     private static final int REQUEST_CODE = 0;
     private static final String TAG = "MainActivity.java";
-    private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
+    //private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
+    private static final String THE_NUMBER_EMERGENCY_POLICE = "5556";
     private static final String THE_URL_LOCATION = "http://maps.google.com/?q=";
     private static final String THE_MESSAGE_PREDETER = "Emergencia";
     private static final String ALERTA_SAN_JUAN = "ALERTA SAN JUAN";
@@ -101,6 +102,8 @@ public class MainActivity extends Activity implements AdminMenu {
 
     private Contact contact;
 
+    View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -109,25 +112,53 @@ public class MainActivity extends Activity implements AdminMenu {
         setContentView(R.layout.fragment_main);
 
         saveLocal = getSharedPreferences(configSmsLocalFile, 0);
-
-        setSharedPreference();
+        
+        new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+				setSharedPreference();
+		        getSharePreference();
+		        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
+		       
+			}
+		}).start();		
+        
 
         //***************************************************************************************
-
-
-        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
-
+        initLocation();
         initUI();
-
-        init();
-
+        
+	        
+        	
         addListenerOnButtonAlert();
 
         showAlertDialogCondition();
+       
+        
+        
+        
+        
+
+       
 
     }
 
-    private void showAlertDialogCondition() {
+    protected void getSharePreference() {
+    	 // the local variable obtain from sharedPreference
+
+        theNumber = saveLocal.getString(getString(R.string.configNumberString), "");
+
+        theMessage = saveLocal.getString(getString(R.string.configMessageString), "");
+
+        theFlagPoliceSendSMS = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
+
+        theHomeUser = saveLocal.getString(getString(R.string.configHomeUser), "");
+		
+	}
+
+	private void showAlertDialogCondition() {
         //*******************************
         if (provider != null) {
 
@@ -242,7 +273,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
     }
 
-    private void init() {
+    private void initLocation() {
         try {
 
 
@@ -511,21 +542,12 @@ public class MainActivity extends Activity implements AdminMenu {
                 if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")) {
                     try { // Ask our inflater to create the view
                         LayoutInflater f = getLayoutInflater();
-                        final View view = f.createView(name, null, attrs);
+                        view = f.createView(name, null, attrs);
                         /* The background gets refreshed each time a new item is added the options menu.
                         * So each time Android applies the default background we need to set our own
 	                    * background. This is done using a thread giving the background change as runnable 
 	                    * object */
-                        new Handler().post(new Runnable() {
-                            public void run() {
-                                // sets the background color
-                                view.setBackgroundResource(R.color.menubg);
-                                // sets the text color
-                                ((TextView) view).setTextColor(Color.WHITE);
-                                // sets the text size
-                                ((TextView) view).setTextSize(18);
-                            }
-                        });
+                        menuBackGround();
                         return view;
                     } catch (InflateException e) {
                         Log.d(TAG, e.getMessage());
@@ -638,49 +660,52 @@ public class MainActivity extends Activity implements AdminMenu {
             @Override
             public void onClick(View v) {
 
-                // the local variable obtain from sharedPreference
+               
+            		
+						
+					
+							// TODO Auto-generated method stub
+							sendMessageThePoliceAndContact();
+					
+					
 
-                theNumber = saveLocal.getString(getString(R.string.configNumberString), "");
-
-                theMessage = saveLocal.getString(getString(R.string.configMessageString), "");
-
-                theFlagPoliceSendSMS = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
-
-                theHomeUser = saveLocal.getString(getString(R.string.configHomeUser), "");
-
-
-                //number of message send and the message text default
-
-                if ((theNumber.length() > 0 && theMessage.length() > 0)) {
-
-                    // Flag indicating whether or not send a text message
-
-                    if (theFlagPoliceSendSMS || db.getContactsCount() > 0) {
-
-                        // begin asyn task
-
-                        new AsyncTaskSplash().execute();
-
-                    } else {
-
-                        Toast.makeText(MainActivity.this,
-                                getString(R.string.text_alert_send_msg),
-                                Toast.LENGTH_LONG).show();
-                    }
-                } else {
-
-                    Toast.makeText(MainActivity.this,
-                            getString(R.string.text_input_number_phone),
-                            Toast.LENGTH_LONG).show();
-
-                }
+			                
 
             }
         });
 
     }
+    protected void sendMessageThePoliceAndContact(){
+    	
+    	//number of message send and the message text default
+		
+        if ((theNumber.length() > 0 && theMessage.length() > 0)) {
 
-    private void setSharedPreference() {
+            // Flag indicating whether or not send a text message
+
+            if (theFlagPoliceSendSMS || db.getContactsCount() > 0) {
+
+                // begin asyn task
+
+                new AsyncTaskSplash().execute();
+
+            } else {
+
+                Toast.makeText(MainActivity.this,
+                        getString(R.string.text_alert_send_msg),
+                        Toast.LENGTH_LONG).show();
+            }
+        } else {
+
+            Toast.makeText(MainActivity.this,
+                    getString(R.string.text_input_number_phone),
+                    Toast.LENGTH_LONG).show();
+
+        }
+    	
+    }
+
+    protected void setSharedPreference() {
 
         SharedPreferences.Editor editor = saveLocal.edit();
 
@@ -960,6 +985,20 @@ public class MainActivity extends Activity implements AdminMenu {
             }
         }, 1000);
     }
+
+    @Override
+    public void menuBackGround() {
+        new Handler().post(new Runnable() {
+            public void run() {
+                // sets the background color
+                view.setBackgroundResource(R.color.menubg);
+                // sets the text color
+                ((TextView) view).setTextColor(Color.WHITE);
+                // sets the text size
+                ((TextView) view).setTextSize(18);
+            }
+        });
+    }
 //**********************************************************************************************************************************
 
     //****************************************************************************************************************************************************
@@ -969,7 +1008,6 @@ public class MainActivity extends Activity implements AdminMenu {
         int myprogress;
 
         //-----------------------------------------------------------------------------------------------------------------------------------
-        @SuppressWarnings("finally")
         protected Boolean doInBackground(Void... arg0) {
 
             Double latitud;
@@ -1095,6 +1133,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
     }
 
+    
     //**********************************************************************class Async**************************************************
     private class AsynLocation extends AsyncTask<Void, Integer, Void> {
 
@@ -1169,7 +1208,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
             updateScreen(location);
 
-            if (Geocoder.isPresent() && location != null) {
+            if (location != null) {
 
                 getGeoCodeFromLatLon(location);
 
@@ -1201,4 +1240,5 @@ public class MainActivity extends Activity implements AdminMenu {
 
     }// end class
 
+    
 }//End Class MainActivity

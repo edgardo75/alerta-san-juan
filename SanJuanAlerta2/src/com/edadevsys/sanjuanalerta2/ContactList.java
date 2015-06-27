@@ -32,6 +32,8 @@ public class ContactList extends Activity implements AdminMenu {
 
     private ContactsAdapter adapterContact;
 
+    View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -76,21 +78,12 @@ public class ContactList extends Activity implements AdminMenu {
                 if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")) {
                     try { // Ask our inflater to create the view
                         LayoutInflater f = getLayoutInflater();
-                        final View view = f.createView(name, null, attrs);
+                        view = f.createView(name, null, attrs);
                         /* The background gets refreshed each time a new item is added the options menu.
                         * So each time Android applies the default background we need to set our own
 	                    * background. This is done using a thread giving the background change as runnable 
 	                    * object */
-                        new Handler().post(new Runnable() {
-                            public void run() {
-                                // sets the background color
-                                view.setBackgroundResource(R.color.menubg);
-                                // sets the text color
-                                ((TextView) view).setTextColor(Color.WHITE);
-                                // sets the text size
-                                ((TextView) view).setTextSize(18);
-                            }
-                        });
+                        menuBackGround();
                         return view;
                     } catch (InflateException e) {
                         Log.d(TAG, e.getMessage());
@@ -117,6 +110,20 @@ public class ContactList extends Activity implements AdminMenu {
             }
         }, 1000);
 
+    }
+
+    @Override
+    public void menuBackGround() {
+        new Handler().post(new Runnable() {
+            public void run() {
+                // sets the background color
+                view.setBackgroundResource(R.color.menubg);
+                // sets the text color
+                ((TextView) view).setTextColor(Color.WHITE);
+                // sets the text size
+                ((TextView) view).setTextSize(18);
+            }
+        });
     }
 
     @Override
