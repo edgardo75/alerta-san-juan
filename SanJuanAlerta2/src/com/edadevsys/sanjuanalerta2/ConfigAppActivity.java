@@ -15,7 +15,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.edadevsys.sanjuanalerta2.utils.Validation;
 
 @SuppressLint({"ValidFragment", "NewApi"})
