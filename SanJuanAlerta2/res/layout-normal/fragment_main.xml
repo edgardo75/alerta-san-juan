@@ -57,9 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textDataPersonal"
+        android:layout_alignLeft="@+id/textLabelMovil"
         android:layout_alignRight="@+id/imgViewMinGob"
         android:layout_alignTop="@+id/textSend911"
-        android:layout_toRightOf="@+id/textDataPersonal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -67,40 +67,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textDataPersonal"
-        android:layout_alignRight="@+id/itemContact"
         android:layout_below="@+id/imageBtnSms"
         android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <ProgressBar
-        android:id="@+id/progressLocation"
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textDataPersonal"
-        android:layout_alignLeft="@+id/textLat"
-        android:visibility="invisible" />
+        android:layout_toLeftOf="@+id/imgViewMinGob"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/textLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textDataPersonal"
-        android:layout_alignLeft="@+id/textLat"
+        android:layout_alignLeft="@+id/textLabelMovil"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textDataPersonal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <ImageView
-        android:id="@+id/imageBtnSms"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="10dp"
-        android:contentDescription="@string/text_context_icon_button_principal"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_btn_alert_logo" />
 
     <ImageView
         android:id="@+id/imgViewMinGob"
@@ -128,5 +108,24 @@
         android:layout_toLeftOf="@+id/textLabelAlerta"
         android:text="@string/text_title_lat"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/imageBtnSms"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignLeft="@+id/textLabelMovil"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/text_context_icon_button_principal"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_btn_alert_logo" />
+
+    <ProgressBar
+        android:id="@+id/progressLocation"
+        style="?android:attr/progressBarStyleLargeInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textLabelAlerta"
+        android:layout_below="@+id/textLabelAlerta"
+        android:visibility="invisible" />
 
 </RelativeLayout>

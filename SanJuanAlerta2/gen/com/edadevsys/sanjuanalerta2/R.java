@@ -998,8 +998,6 @@ containing a value of this type.
         public static final int ic_menu_settings=0x7f02005f;
         public static final int ic_menu_view_contacts=0x7f020060;
         public static final int ic_save=0x7f020061;
-        /**  <drawable name="menu_bg">#DDDAAA</drawable> 
-         */
         public static final int menu_full_bg=0x7f020062;
     }
     public static final class id {
@@ -1014,6 +1012,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f090002;
         public static final int action_menu_presenter=0x7f090003;
         public static final int action_mode_close_button=0x7f090024;
+        public static final int action_settings=0x7f09005c;
         public static final int activity_chooser_view_content=0x7f090025;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f090016;
@@ -1049,21 +1048,21 @@ containing a value of this type.
         public static final int list_item=0x7f090029;
         public static final int mCounter=0x7f09004c;
         public static final int mCounter1=0x7f09004a;
-        public static final int menu_config=0x7f09005d;
-        public static final int menu_contact=0x7f09005e;
-        public static final int menu_delListDb=0x7f09005c;
-        public static final int menu_del_all=0x7f090061;
-        public static final int menu_del_select_row=0x7f090060;
+        public static final int menu_config=0x7f09005e;
+        public static final int menu_contact=0x7f09005f;
+        public static final int menu_delListDb=0x7f09005d;
+        public static final int menu_del_all=0x7f090062;
+        public static final int menu_del_select_row=0x7f090061;
         public static final int menu_end=0x7f09005a;
-        public static final int menu_return=0x7f090062;
-        public static final int menu_settings=0x7f09005f;
+        public static final int menu_return=0x7f090063;
+        public static final int menu_settings=0x7f090060;
         public static final int menu_sms=0x7f09005b;
         public static final int messageConfigForPolice=0x7f09004e;
         public static final int middle=0x7f090018;
         public static final int never=0x7f090012;
         public static final int none=0x7f090019;
         public static final int normal=0x7f090007;
-        public static final int progressLocation=0x7f090056;
+        public static final int progressLocation=0x7f090057;
         public static final int progress_circular=0x7f090004;
         public static final int progress_horizontal=0x7f090005;
         public static final int radio=0x7f09002f;
@@ -1092,7 +1091,7 @@ containing a value of this type.
         public static final int textLabelMovil=0x7f09004f;
         public static final int textLat=0x7f090053;
         public static final int textLocationAndStreet=0x7f090054;
-        public static final int textLong=0x7f090057;
+        public static final int textLong=0x7f090056;
         public static final int textSend911=0x7f090052;
         public static final int textView1=0x7f090047;
         public static final int textViewDataPersonal=0x7f09004d;
@@ -1165,11 +1164,12 @@ containing a value of this type.
     public static final class menu {
         public static final int addcontactselectedmenu=0x7f0c0000;
         public static final int config_app=0x7f0c0001;
-        public static final int listdbmenu=0x7f0c0002;
-        public static final int main=0x7f0c0003;
-        public static final int main_contact=0x7f0c0004;
-        public static final int menulistcontactapp=0x7f0c0005;
-        public static final int sms=0x7f0c0006;
+        public static final int edgar=0x7f0c0002;
+        public static final int listdbmenu=0x7f0c0003;
+        public static final int main=0x7f0c0004;
+        public static final int main_contact=0x7f0c0005;
+        public static final int menulistcontactapp=0x7f0c0006;
+        public static final int sms=0x7f0c0007;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 

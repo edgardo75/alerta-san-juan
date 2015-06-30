@@ -14,7 +14,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -48,6 +47,7 @@ import android.widget.Toast;
 import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
 import com.edadevsys.sanjuanalerta2.model.Contact;
 import com.edadevsys.sanjuanalerta2.utils.AdminMenu;
+import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -63,8 +63,8 @@ public class MainActivity extends Activity implements AdminMenu {
     static final String STATE_STREET = "streetValue";
     private static final int REQUEST_CODE = 0;
     private static final String TAG = "MainActivity.java";
-    //private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
-    private static final String THE_NUMBER_EMERGENCY_POLICE = "5556";
+    private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
+    //private static final String THE_NUMBER_EMERGENCY_POLICE = "5556";
     private static final String THE_URL_LOCATION = "http://maps.google.com/?q=";
     private static final String THE_MESSAGE_PREDETER = "Emergencia";
     private static final String ALERTA_SAN_JUAN = "ALERTA SAN JUAN";
@@ -97,10 +97,9 @@ public class MainActivity extends Activity implements AdminMenu {
     private String currentSaveLongitud = "0.0";
     private String currentSaveStreet;
     private String name;
-
     private String number;
-
     private Contact contact;
+    private String phoneDepartment;
 
     View view;
 
@@ -108,7 +107,7 @@ public class MainActivity extends Activity implements AdminMenu {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        Log.d(TAG, "on resume");
         setContentView(R.layout.fragment_main);
 
         saveLocal = getSharedPreferences(configSmsLocalFile, 0);
@@ -121,7 +120,7 @@ public class MainActivity extends Activity implements AdminMenu {
 				setSharedPreference();
 		        getSharePreference();
 		        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
-		       
+		        LocationPhones.createHashMapLocality();
 			}
 		}).start();		
         
@@ -299,7 +298,7 @@ public class MainActivity extends Activity implements AdminMenu {
         textLatitud = (TextView) findViewById(R.id.textLat);
 
         textLongitud = (TextView) findViewById(R.id.textLong);
-
+        
         textLocationStreet = (TextView) findViewById(R.id.textLocationAndStreet);
 
         progressbar = (ProgressBar) findViewById(R.id.progressLocation);
@@ -320,15 +319,35 @@ public class MainActivity extends Activity implements AdminMenu {
         // TODO Auto-generated method stub
         super.onResume();
 
-
+        Log.d(TAG, "on resume");
         //****************************************
         //*******************************
-        if (locationListener != null) {
+        
+				if (locationListener != null) {
+					
+		            locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
+		
+		        }
+				
+		sendBroadCastReceiver();    
+        
+        //********************************************************************
 
-            locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
+        //******************************
+        //***************************************
 
-        }
-        sendBroadCastReceiver = new BroadcastReceiver() {
+        registerReceiver(sendBroadCastReceiver, new IntentFilter(SENT));
+
+
+        //***************************************************************************************************
+        delayMenu();
+
+
+    }
+
+    private void sendBroadCastReceiver(){
+    	
+    	sendBroadCastReceiver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -375,41 +394,40 @@ public class MainActivity extends Activity implements AdminMenu {
                 Toast.makeText(getBaseContext(), result, Toast.LENGTH_SHORT).show();
             }
         };
-        //********************************************************************
-
-        //******************************
-        //***************************************
-
-        registerReceiver(sendBroadCastReceiver, new IntentFilter(SENT));
-
-
-        //***************************************************************************************************
-        delayMenu();
-
-
     }
-
-
     @Override
     protected void onPause() {
 
         super.onPause();
-
+        Log.d(TAG, "on resume");
+        unRegisterReceiver();
         if (locationListener != null) {
 
             locationManager.removeUpdates(locationListener);
+            
 
         }
     }
+private void unRegisterReceiver(){
+	if (sendBroadCastReceiver != null) {
 
+        // Unregister receiver.
+        unregisterReceiver(sendBroadCastReceiver);
+
+        // The important bit here is to set the receiver
+        // to null once it has been unregistered.
+        sendBroadCastReceiver = null;
+
+    }
+}
     @Override
     protected void onStop() {
 
         super.onStop();
-
+        Log.d(TAG, "on stop");
         try {
 
-            if (sendBroadCastReceiver != null) {
+           /* if (sendBroadCastReceiver != null) {
 
                 // Unregister receiver.
                 unregisterReceiver(sendBroadCastReceiver);
@@ -418,7 +436,8 @@ public class MainActivity extends Activity implements AdminMenu {
                 // to null once it has been unregistered.
                 sendBroadCastReceiver = null;
 
-            }
+            }*/
+        	unRegisterReceiver();
 
         } catch (Exception e) {
 
@@ -426,12 +445,14 @@ public class MainActivity extends Activity implements AdminMenu {
 
         } finally {
 
-            if (locationListener != null) {
-
-                locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
-
-            }
-
+        	
+					if (locationListener != null) {
+						
+		                locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
+		
+		            }
+					
+			    
         }
 
     }
@@ -479,7 +500,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
         try {
 
-            if (sendBroadCastReceiver != null) {
+           /* if (sendBroadCastReceiver != null) {
 
                 // Unregister receiver.
                 unregisterReceiver(sendBroadCastReceiver);
@@ -492,7 +513,8 @@ public class MainActivity extends Activity implements AdminMenu {
 
                 Log.w(TAG, "Do not unregister receiver as it was never registered");
 
-            }
+            }*/
+        	unRegisterReceiver();
 
             if (configChangeRestore) {
 
@@ -528,6 +550,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
         getMenuInflater().inflate(R.menu.main, menu);
         setMenuBackground();
+        
         return true;
     }
 
@@ -683,7 +706,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
             // Flag indicating whether or not send a text message
 
-            if (theFlagPoliceSendSMS || db.getContactsCount() > 0) {
+            if (theFlagPoliceSendSMS || db.getContactsCount() > 0 || phoneDepartment.length()>0) {
 
                 // begin asyn task
 
@@ -800,41 +823,61 @@ public class MainActivity extends Activity implements AdminMenu {
         // TODO Auto-generated method stub
 
         super.onActivityResult(requestCode, resultCode, data);
-        Cursor phone = null;
-
-        Cursor cursor = null;
+       
 
 
-        switch (requestCode) {
-            case 0:
-                isProviderEnabled();
-
-                if (isGPS_enabled || isNETWORK_enabled) {
-                    configChangeRestore = true;
-                }
-
-                initializeCriteriaLatitudLongitud();
-
-                provider = locationManager.getBestProvider(criteria, false);
-
-                setupDataGeoLocalizeAndTriggerTask();
-
-                break;
-            case 1:
-                Log.w(TAG, "Do Nothing");
-                break;
-
-            default:
-                break;
-        }
+			        switch (requestCode) {
+			            case 0:
+			                isProviderEnabled();
+			
+					                if (isGPS_enabled || isNETWORK_enabled) {
+					                    configChangeRestore = true;
+					                }
+			
+					                initializeCriteriaLatitudLongitud();
+			
+					                provider = locationManager.getBestProvider(criteria, false);
+			
+					                setupDataGeoLocalizeAndTriggerTask();
+			
+			                break;
+			            case 1:
+			                Log.w(TAG, "Do Nothing");
+			                break;
+			
+			            default:
+			                break;
+			        }
 
 
         // Check which request it is that we're responding to
-        try {
+        //try {
+
+        	requestContactListPhone(requestCode,resultCode,data);
+					            
+					            
+        //} catch (Exception e) {
+          //  Log.e(TAG, "Error in ActivityResult");
+        //} 
 
 
-            if (requestCode == PICK_CONTACT_REQUEST) {
+    }
 
+    private void isProviderEnabled() {
+
+        isGPS_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        isNETWORK_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+    }
+    
+    private void requestContactListPhone(int requestCode,int resultCode,Intent data){
+    	 Cursor phone = null;
+
+         Cursor cursor = null;
+    	try {
+			
+    		if (requestCode == PICK_CONTACT_REQUEST) {
+    			
                 // Make sure the request was successful
                 if (resultCode == RESULT_OK) {
 
@@ -892,42 +935,44 @@ public class MainActivity extends Activity implements AdminMenu {
                         int count = DataBaseHandler.getDataBaseInstance(MainActivity.this).getContactsCount();
 
 
-                        if (count == 10) {
-                            Toast.makeText(MainActivity.this, getString(R.string.text_list_fill), Toast.LENGTH_LONG).show();
-                        } else {
-                            if (!(isNumberExist)) {
-
-                                DataBaseHandler.getDataBaseInstance(MainActivity.this).addContact(contact);
-                                Toast.makeText(MainActivity.this, getString(R.string.text_saved), Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                Toast.makeText(MainActivity.this, getString(R.string.text_saved_allready), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    } else {
-                        Toast.makeText(MainActivity.this, getString(R.string.text_no_phone_contact), Toast.LENGTH_SHORT).show();
-                    }
+			                        if (count == 10) {
+			                            Toast.makeText(MainActivity.this, getString(R.string.text_list_fill), Toast.LENGTH_LONG).show();
+			                        } else {
+			                            if (!(isNumberExist)) {
+			
+			                                DataBaseHandler.getDataBaseInstance(MainActivity.this).addContact(contact);
+			                                Toast.makeText(MainActivity.this, getString(R.string.text_saved), Toast.LENGTH_SHORT).show();
+			
+			                            } else {
+			                                Toast.makeText(MainActivity.this, getString(R.string.text_saved_allready), Toast.LENGTH_SHORT).show();
+			                            }
+			                        }
+			         } else {
+			             Toast.makeText(MainActivity.this, getString(R.string.text_no_phone_contact), Toast.LENGTH_SHORT).show();
+			         }//end if moveTofirst
 
                 }
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Error in ActivityResult");
-        } finally {
+    		
+    		
+    		
+    		
+    		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			
 
 
-            phone.close();
+	            phone.close();
 
-            cursor.close();
-        }
-
-
-    }
-
-    private void isProviderEnabled() {
-
-        isGPS_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        isNETWORK_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
+	            cursor.close();
+	        
+		}
+    	
+    	
+    	
+    	
     }
 
     //**************************************************************************************************************
@@ -936,6 +981,7 @@ public class MainActivity extends Activity implements AdminMenu {
         List<Address> addresses = null;
 
         String street = null;
+        String number = null;
         String city = null;
         Geocoder geocoder = null;
         StringBuilder setTextLocationAndStreet = null;
@@ -950,20 +996,26 @@ public class MainActivity extends Activity implements AdminMenu {
             if (addresses != null) {
 
                 street = addresses.get(0).getThoroughfare();
+                number = addresses.get(0).getFeatureName();
                 city = addresses.get(0).getLocality();
 
-
-                setTextLocationAndStreet = new StringBuilder(10);
-
-                if (street.length() > 0) {
-                    setTextLocationAndStreet.append(street).append("\n");
-                }
-                if (city.length() > 0) {
-                    setTextLocationAndStreet.append(city);
-                }
+                  
+                	setTextLocationAndStreet = new StringBuilder(10);
+                  
+			                if (street.length() > 0) {
+			                    setTextLocationAndStreet.append(street).append(" ");
+			                }
+					                if(number.length()>0){
+					                	setTextLocationAndStreet.append(number).append("\n");
+					                }
+						                if (city.length() > 0) {
+						                    setTextLocationAndStreet.append(city);
+						                    phoneDepartment = LocationPhones.searchPhoneInMapStructure(city);
+						                }
 
 
                 textLocationStreet.setText(setTextLocationAndStreet);
+                Toast.makeText(getApplicationContext(), "Telefono a enviar "+phoneDepartment, Toast.LENGTH_LONG).show();
             }
 
         } catch (NullPointerException e) {
@@ -990,10 +1042,10 @@ public class MainActivity extends Activity implements AdminMenu {
     public void menuBackGround() {
         new Handler().post(new Runnable() {
             public void run() {
-                // sets the background color
-                view.setBackgroundResource(R.color.menubg);
+                // sets the background color                
+                //view.setBackgroundColor(R.color.menubg);
                 // sets the text color
-                ((TextView) view).setTextColor(Color.WHITE);
+                //((TextView) view).setTextColor(Color.WHITE);
                 // sets the text size
                 ((TextView) view).setTextSize(18);
             }
@@ -1094,6 +1146,10 @@ public class MainActivity extends Activity implements AdminMenu {
                     }
 
 
+                }
+                
+                if(phoneDepartment.length()>0){                	
+                	sendMessage(phoneDepartment, strMessageBuilder.toString());
                 }
 
                 retorno = true;

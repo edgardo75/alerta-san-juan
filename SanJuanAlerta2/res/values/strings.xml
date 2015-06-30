@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">San Juan Alerta</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name" tools:ignore="MissingTranslation,MissingTranslation">San Juan Alerta</string>
     <string name="action_settings">Ajustes</string>
     <string name="action_del_row_selected">Borrar seleccionado</string>
     <string name="action_del_all">Borrar todos</string>
@@ -89,7 +90,6 @@
     <string name="text_done">Hecho</string>
     <string name="text_requerid">requerido</string>
     <string name="text_contain_error">Hay errores de texto o faltan datos, corrija por favor</string>
-    <string name="text_inset_number_sms">Debe ingresar un número y mensaje para enviar sms de alerta.</string>
+    <string name="text_inset_number_sms">Debe ingresar un número y mensaje para enviar sms de alerta.</string>    
 
 </resources>
-
