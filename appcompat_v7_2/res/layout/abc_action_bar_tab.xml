@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+<!--suppress AndroidUnknownAttribute, AndroidUnknownAttribute -->
 <view xmlns:android="http://schemas.android.com/apk/res/android"
       class="android.support.v7.internal.widget.ScrollingTabContainerView$TabView"
       android:layout_width="0dp"

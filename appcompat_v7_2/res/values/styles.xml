@@ -93,7 +93,7 @@
     </style>
 
     <style name="Widget.AppCompat.Light.ActionBar.TabBar.Inverse"
-           parent="Widget.AppCompat.Light.Base.ActionBar.TabBar.Inverse"></style>
+           parent="Widget.AppCompat.Light.Base.ActionBar.TabBar.Inverse"/>
 
     <style name="Widget.AppCompat.ActionBar.TabView"
            parent="Widget.AppCompat.Base.ActionBar.TabView">
