@@ -23,12 +23,12 @@ import java.util.List;
 @SuppressLint("InflateParams")
 public class ContactsAdapter extends BaseAdapter {
     private static final String TAG = "ContactsAdapter.java";
-    Context context = null;
-    LayoutInflater inflater = null;
-    List<Contact> contacts = null;
+    private Context context = null;
+    private LayoutInflater inflater = null;
+    private List<Contact> contacts = null;
 
-    SparseBooleanArray mSparseBooleanArray = null;
-    OnCheckedChangeListener mChequedChangeListener = new OnCheckedChangeListener() {
+    private SparseBooleanArray mSparseBooleanArray = null;
+    private final OnCheckedChangeListener mChequedChangeListener = new OnCheckedChangeListener() {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,25 +52,29 @@ public class ContactsAdapter extends BaseAdapter {
 
     }
 
-    public ContactsAdapter(Context context, LayoutInflater inflater, ArrayList<Contact> contacts) {
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public ContactsAdapter(Context context, LayoutInflater inflater, ArrayList<Contact> contacts) {
+//
+//        super();
+//
+//        mSparseBooleanArray = new SparseBooleanArray(0);
+//
+//        this.context = context;
+//
+//        this.inflater = inflater;
+//
+//        this.contacts = contacts;
+//
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
-        super();
-
-        mSparseBooleanArray = new SparseBooleanArray(0);
-
-        this.context = context;
-
-        this.inflater = inflater;
-
-        this.contacts = contacts;
-
-    }
-
-    public void addContactAdapter(Contact contact) {
-
-        DataBaseHandler.getDataBaseInstance(context).addContact(contact);
-
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public void addContactAdapter(Contact contact) {
+//
+//        DataBaseHandler.getDataBaseInstance(context).addContact(contact);
+//
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     @Override
     public int getCount() {
@@ -79,11 +83,13 @@ public class ContactsAdapter extends BaseAdapter {
 
     }
 
-    public boolean isNumberExist(String number) {
-
-        return DataBaseHandler.getDataBaseInstance(context).isNumberExist(number);
-
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public boolean isNumberExist(String number) {
+//
+//        return DataBaseHandler.getDataBaseInstance(context).isNumberExist(number);
+//
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     @Override
     public Contact getItem(int position) {
@@ -99,24 +105,26 @@ public class ContactsAdapter extends BaseAdapter {
 
     }
 
-    public ArrayList<Contact> getAllItems() {
-
-		/*List<Contact> mTempArrayContactsDb = DataBaseHandler.getDataBaseInstance(context).getAllContacts();
-
-		ArrayList<Contact> mTempArrayContact = new ArrayList<Contact>();
-
-		for(Contact cn: mTempArrayContactsDb){
-
-			mTempArrayContact.add(cn);
-
-		}*/
-
-        return (ArrayList<Contact>) DataBaseHandler.getDataBaseInstance(context).getAllContacts();
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public ArrayList<Contact> getAllItems() {
+//
+//		/*List<Contact> mTempArrayContactsDb = DataBaseHandler.getDataBaseInstance(context).getAllContacts();
+//
+//		ArrayList<Contact> mTempArrayContact = new ArrayList<Contact>();
+//
+//		for(Contact cn: mTempArrayContactsDb){
+//
+//			mTempArrayContact.add(cn);
+//
+//		}*/
+//
+//        return (ArrayList<Contact>) DataBaseHandler.getDataBaseInstance(context).getAllContacts();
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     public ArrayList<Contact> getChequedItems() {
 
-        ArrayList<Contact> mTempArrayChequed = new ArrayList<Contact>();
+        ArrayList<Contact> mTempArrayChequed = new ArrayList<>();
 
 
         int contactsCount = contacts.size();
@@ -135,7 +143,7 @@ public class ContactsAdapter extends BaseAdapter {
 
     public int dellAllRows() {
 
-        int retorno = 0;
+        int retorno;
 
         try {
 
@@ -153,7 +161,7 @@ public class ContactsAdapter extends BaseAdapter {
     }
 
     public int dellSeletedItems() {
-        int retorno = 0;
+        int retorno;
         try {
             ArrayList<Contact> mTemArraySelectedContacts = getChequedItems();
             int contactsCountSelected = mTemArraySelectedContacts.size();

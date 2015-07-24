@@ -12,7 +12,8 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="350dp"
+        android:longClickable="true">
 
     </ListView>
 
@@ -22,6 +23,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:contentDescription="@string/text_context_icon_gov_sj"
         android:src="@drawable/boton_sj_icon" />
 
@@ -31,6 +33,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
         android:contentDescription="@string/text_context_icon_mg"
         android:src="@drawable/boton_mg_icon" />
 

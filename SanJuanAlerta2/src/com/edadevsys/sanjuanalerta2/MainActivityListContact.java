@@ -18,8 +18,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.edadevsys.sanjuanalerta2.adapter.MultiSelectionAdapter;
 import com.edadevsys.sanjuanalerta2.model.Contact;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,19 +31,19 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
     private static final String TAG = "MaAcLiCo.java";
 
-    ListView mListView = null;
+    private ListView mListView = null;
 
-    Button btnSaveChequedItems = null;
+    private Button btnSaveChequedItems = null;
 
-    ArrayList<Contact> mainContactsArrayList = null;
+    private ArrayList<Contact> mainContactsArrayList = null;
 
-    HashMap<String, String> data = null;
+    private HashMap<String, String> data = null;
 
-    HashSet<String> numbers = null;
+    private HashSet<String> numbers = null;
 
-    MultiSelectionAdapter mAdapter = null;
+    private MultiSelectionAdapter mAdapter = null;
 
-    Cursor mainCursor = null;
+    private Cursor mainCursor = null;
 
 
     @Override
@@ -64,11 +66,11 @@ public class MainActivityListContact extends Activity implements OnClickListener
     private void init() {
         // TODO Auto-generated method stub
 
-        mainContactsArrayList = new ArrayList<Contact>();
+        mainContactsArrayList = new ArrayList<>();
 
-        data = new HashMap<String, String>(0);
+        data = new HashMap<>(0);
 
-        numbers = new HashSet<String>(0);
+        numbers = new HashSet<>(0);
 
         getAllContacts();
 
@@ -170,8 +172,6 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
     private void workingWithContactId(int contactId) {
         Cursor mContacts = null;
-        Cursor m_Phone = null;
-        Contact contact = null;
 
         try {
             final String[] projection = new String[]{
@@ -184,32 +184,33 @@ public class MainActivityListContact extends Activity implements OnClickListener
             while (mContacts.moveToNext()) {
 
 
-                contactsTratment(mContacts, m_Phone, contactId);
+                contactsTratment(mContacts, contactId);
 
             }//end while
 
 
-            contactAddIntoHashMapList(contact);
+            contactAddIntoHashMapList();
 
 
         } catch (Exception e) {
             Log.e(TAG, "Error in mETHOD WORKINGWITHCONTACT ID");
         } finally {
 
+            assert mContacts != null;
             mContacts.close();
         }
 
 
     }
 
-    private void contactAddIntoHashMapList(Contact contact) {
+    private void contactAddIntoHashMapList() {
         String mName;
         String mNumber;
 
         for (Entry<String, String> entry : data.entrySet()) {
 
             String name = entry.getKey();
-            String number = entry.getValue().toString();
+            String number = entry.getValue();
             mName = null;
             mNumber = null;
 
@@ -222,7 +223,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
             if (mName != null && mNumber != null) {
 
-                contact = new Contact();
+                Contact contact = new Contact();
 
                 contact.setName(mName);
                 contact.setPhoneNumber(mNumber);
@@ -235,8 +236,8 @@ public class MainActivityListContact extends Activity implements OnClickListener
     }
 
 
-    private void contactsTratment(Cursor mContacts, Cursor m_Phone, int contactId) {
-
+    private void contactsTratment(Cursor mContacts, int contactId) {
+        Cursor m_Phone = null;
         try {
             if (mContacts.moveToFirst()) {
 
@@ -294,6 +295,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
+            assert m_Phone !=null;
             m_Phone.close();
         }
 
@@ -317,7 +319,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            boolean retorno = false;
+
             try {
                 if (mAdapter != null) {
 
@@ -337,11 +339,10 @@ public class MainActivityListContact extends Activity implements OnClickListener
                 }
 
             } catch (Exception e) {
-                retorno = false;
                 Log.e(TAG, "");
                 // TODO: handle exception
             }
-            return retorno;
+            return false;
 
 
         }
@@ -354,7 +355,7 @@ public class MainActivityListContact extends Activity implements OnClickListener
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            if (result.booleanValue()) {
+            if (result) {
                 Toast.makeText(MainActivityListContact.this, getString(R.string.text_done), Toast.LENGTH_SHORT).show();
 
 

@@ -16,7 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/chkEnable"
         android:layout_alignBottom="@+id/chkEnable"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/chkEnable"
         android:layout_toRightOf="@+id/chkEnable"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

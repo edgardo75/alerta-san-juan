@@ -21,10 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.edadevsys.sanjuanalerta2.adapter.ContactsAdapter;
-import com.edadevsys.sanjuanalerta2.utils.AdminMenu;
-
-
-public class ContactList extends Activity implements AdminMenu {
+public class ContactList extends Activity {
 
     private static final String TAG = "ContactList.java";
 
@@ -32,7 +29,7 @@ public class ContactList extends Activity implements AdminMenu {
 
     private ContactsAdapter adapterContact;
 
-    View view;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +43,12 @@ public class ContactList extends Activity implements AdminMenu {
         init();
 
 
-    }// end onCreate
 
+    }// end onCreate
+    protected boolean onLongListItemClick(View v, int pos, long id) {
+        Log.i(TAG, "onLongListItemClick id=" + id);
+        return true;
+    }
     // init method to instantiate adapter
     private void init() {
 
@@ -81,13 +82,11 @@ public class ContactList extends Activity implements AdminMenu {
                         view = f.createView(name, null, attrs);
                         /* The background gets refreshed each time a new item is added the options menu.
                         * So each time Android applies the default background we need to set our own
-	                    * background. This is done using a thread giving the background change as runnable 
+	                    * background. This is done using a thread giving the background change as runnable
 	                    * object */
                         menuBackGround();
                         return view;
-                    } catch (InflateException e) {
-                        Log.d(TAG, e.getMessage());
-                    } catch (ClassNotFoundException e) {
+                    } catch (InflateException | ClassNotFoundException e) {
                         Log.d(TAG, e.getMessage());
                     }
                 }
@@ -103,17 +102,19 @@ public class ContactList extends Activity implements AdminMenu {
         delayMenu();
     }
 
-    public void delayMenu() {
+    private void delayMenu() {
+
         new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
                 openOptionsMenu();
             }
-        }, 1000);
+        },1000);
 
     }
 
-    @Override
-    public void menuBackGround() {
+    
+    private void menuBackGround() {
         new Handler().post(new Runnable() {
             public void run() {
                 // sets the background color
@@ -121,7 +122,7 @@ public class ContactList extends Activity implements AdminMenu {
                 // sets the text color
                 ((TextView) view).setTextColor(Color.WHITE);
                 // sets the text size
-                ((TextView) view).setTextSize(18);
+                ((TextView) view).setTextSize(14);
             }
         });
     }
@@ -266,7 +267,7 @@ public class ContactList extends Activity implements AdminMenu {
 
 
     // method instantiate adapter
-    protected void setupData() {
+    private void setupData() {
         try {
 
             adapterContact = new ContactsAdapter(ContactList.this);
@@ -281,8 +282,8 @@ public class ContactList extends Activity implements AdminMenu {
     }
 
     @SuppressWarnings("finally")
-    protected int delSelectedContacs() {
-        int retorno = 0;
+    private int delSelectedContacs() {
+        int retorno;
         try {
 
             retorno = adapterContact.dellSeletedItems();
@@ -297,8 +298,8 @@ public class ContactList extends Activity implements AdminMenu {
     }
 
     @SuppressWarnings("finally")
-    protected int delAllContact() {
-        int retorno = 0;
+    private int delAllContact() {
+        int retorno;
         try {
 
             retorno = adapterContact.dellAllRows();

@@ -32,10 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SmsActivity"
-            android:label="@string/title_activity_sms" >
-        </activity>
+
         <activity
             android:name=".ConfigAppActivity"
             android:label="@string/title_activity_config_app" >

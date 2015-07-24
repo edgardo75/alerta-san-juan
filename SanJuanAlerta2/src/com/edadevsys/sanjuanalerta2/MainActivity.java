@@ -12,7 +12,6 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Address;
 import android.location.Criteria;
@@ -28,6 +27,7 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Data;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.telephony.SmsManager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -46,7 +46,6 @@ import android.widget.Toast;
 
 import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
 import com.edadevsys.sanjuanalerta2.model.Contact;
-import com.edadevsys.sanjuanalerta2.utils.AdminMenu;
 import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
 
 import java.io.IOException;
@@ -55,12 +54,12 @@ import java.util.List;
 import java.util.Locale;
 
 @SuppressLint("NewApi")
-public class MainActivity extends Activity implements AdminMenu {
+public class MainActivity extends Activity {
 
-    public static final String configSmsLocalFile = "conf1037";
-    static final String STATE_LATITUD = "latitudValue";
-    static final String STATE_LONGITUD = "longitudValue";
-    static final String STATE_STREET = "streetValue";
+    private static final String configSmsLocalFile = "conf1037";
+    private static final String STATE_LATITUD = "latitudValue";
+    private static final String STATE_LONGITUD = "longitudValue";
+    private static final String STATE_STREET = "streetValue";
     private static final int REQUEST_CODE = 0;
     private static final String TAG = "MainActivity.java";
     private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
@@ -73,13 +72,12 @@ public class MainActivity extends Activity implements AdminMenu {
     private final static String SENT = "Mensaje Enviado....";
     private static final int PICK_CONTACT_REQUEST = 1;
     private static DataBaseHandler db = null;
-    public PackageManager packageManager;
-    public LocationManager locationManager;
-    public Location locationGral = null;
-    public LocationListener locationListener = null;
-    boolean isGPS_enabled = false;
-    boolean isNETWORK_enabled = false;
-    boolean configChangeRestore = false;
+    private LocationManager locationManager;
+    private Location locationGral = null;
+    private LocationListener locationListener = null;
+    private boolean isGPS_enabled = false;
+    private boolean isNETWORK_enabled = false;
+    private boolean configChangeRestore = false;
     private BroadcastReceiver sendBroadCastReceiver = null;
     private SharedPreferences saveLocal;
     private ProgressBar progressbar = null;
@@ -96,12 +94,9 @@ public class MainActivity extends Activity implements AdminMenu {
     private String currentSaveLatitud = "0.0";
     private String currentSaveLongitud = "0.0";
     private String currentSaveStreet;
-    private String name;
-    private String number;
-    private Contact contact;
     private String phoneDepartment;
 
-    View view;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +139,8 @@ public class MainActivity extends Activity implements AdminMenu {
 
     }
 
-    protected void getSharePreference() {
+
+    private void getSharePreference() {
     	 // the local variable obtain from sharedPreference
 
         theNumber = saveLocal.getString(getString(R.string.configNumberString), "");
@@ -221,6 +217,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_ESCAPE) {
                     //Do Nothing
+                    Log.w(TAG,"KeyCode");
                 }
 
                 return false;
@@ -245,7 +242,7 @@ public class MainActivity extends Activity implements AdminMenu {
 
     private void setupDataGeoLocalizeAndTriggerTask() {
         //Package global
-        packageManager = getPackageManager();
+
 
         isProviderEnabled();
 
@@ -457,8 +454,9 @@ private void unRegisterReceiver(){
 
     }
 
+
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle  savedInstanceState) {
         // TODO Auto-generated method stub
 
         super.onRestoreInstanceState(savedInstanceState);
@@ -478,8 +476,9 @@ private void unRegisterReceiver(){
 
     }
 
+
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         // TODO Auto-generated method stub
 
         outState.putString(STATE_LATITUD, currentSaveLatitud);
@@ -572,9 +571,7 @@ private void unRegisterReceiver(){
 	                    * object */
                         menuBackGround();
                         return view;
-                    } catch (InflateException e) {
-                        Log.d(TAG, e.getMessage());
-                    } catch (ClassNotFoundException e) {
+                    } catch (InflateException | ClassNotFoundException e) {
                         Log.d(TAG, e.getMessage());
                     }
                 }
@@ -655,7 +652,7 @@ private void unRegisterReceiver(){
 
 
     //********************************************************************************************************
-    public void sendMessage(String theNumber, String myMsg) {
+    private void sendMessage(String theNumber, String myMsg) {
 
         try {
 
@@ -698,7 +695,7 @@ private void unRegisterReceiver(){
         });
 
     }
-    protected void sendMessageThePoliceAndContact(){
+    private void sendMessageThePoliceAndContact(){
     	
     	//number of message send and the message text default
 		
@@ -728,7 +725,7 @@ private void unRegisterReceiver(){
     	
     }
 
-    protected void setSharedPreference() {
+    private void setSharedPreference() {
 
         SharedPreferences.Editor editor = saveLocal.edit();
 
@@ -738,7 +735,7 @@ private void unRegisterReceiver(){
         Boolean theFlagPoliceSendSMSTheNumber = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
 
 
-        if (theNumber.length() == 0 && theMessage.length() == 0) {
+        if ((theNumber != null ? theNumber.length() : 0) == 0 && (theMessage != null ? theMessage.length() : 0) == 0) {
 
             editor.putString(getString(R.string.configMessageString), THE_MESSAGE_PREDETER);
             editor.putString(getString(R.string.configNumberString), THE_NUMBER_EMERGENCY_POLICE);
@@ -755,7 +752,7 @@ private void unRegisterReceiver(){
             editor.putBoolean(getString(R.string.configFlagNumberString), false);
         }
 
-        if (theHome.length() == 0) {
+        if ((theHome != null ? theHome.length() : 0) == 0) {
             editor.putString(getString(R.string.configHomeUser), theHome);
         }
         editor.commit();
@@ -907,7 +904,7 @@ private void unRegisterReceiver(){
 
                         // Retrieve the phone number from the NUMBER column
 
-                        name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                        String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 
                         String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
 
@@ -924,10 +921,10 @@ private void unRegisterReceiver(){
 
                         // Retrieve the phone number from the NUMBER column
                         int column = phone.getColumnIndex(Phone.NUMBER);
-                        number = phone.getString(column);
+                        String number = phone.getString(column);
 
 
-                        contact = new Contact();
+                        Contact contact = new Contact();
                         contact.setName(name);
                         contact.setPhoneNumber(number);
 
@@ -961,12 +958,13 @@ private void unRegisterReceiver(){
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally {
-			
 
 
-	            phone.close();
+            assert phone != null;
 
-	            cursor.close();
+            phone.close();
+
+            cursor.close();
 	        
 		}
     	
@@ -978,30 +976,28 @@ private void unRegisterReceiver(){
     //**************************************************************************************************************
     private void getGeoCodeFromLatLon(Location location) {
 
-        List<Address> addresses = null;
+        List<Address> addresses;
 
-        String street = null;
-        String number = null;
-        String city = null;
-        Geocoder geocoder = null;
-        StringBuilder setTextLocationAndStreet = null;
+        String street;
+        String number;
+        String city;
+        Geocoder geocoder;
+        StringBuilder setTextLocationAndStreet;
 
         try {
 
 
             geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
-
-
             addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             if (addresses != null) {
 
                 street = addresses.get(0).getThoroughfare();
-                number = addresses.get(0).getFeatureName();
+                number = addresses.get(0).getSubThoroughfare();
                 city = addresses.get(0).getLocality();
 
-                  
+
                 	setTextLocationAndStreet = new StringBuilder(10);
-                  
+
 			                if (street.length() > 0) {
 			                    setTextLocationAndStreet.append(street).append(" ");
 			                }
@@ -1029,17 +1025,18 @@ private void unRegisterReceiver(){
         }
     }
 
-    @Override
-    public void delayMenu() {
+
+    private void delayMenu() {
         new Handler().postDelayed(new Runnable() {
+            @Override
             public void run() {
                 openOptionsMenu();
             }
         }, 1000);
     }
 
-    @Override
-    public void menuBackGround() {
+
+    private void menuBackGround() {
         new Handler().post(new Runnable() {
             public void run() {
                 // sets the background color                
@@ -1047,7 +1044,7 @@ private void unRegisterReceiver(){
                 // sets the text color
                 //((TextView) view).setTextColor(Color.WHITE);
                 // sets the text size
-                ((TextView) view).setTextSize(18);
+                ((TextView) view).setTextSize(14);
             }
         });
     }
@@ -1057,7 +1054,6 @@ private void unRegisterReceiver(){
     public class AsyncTaskSplash extends AsyncTask<Void, Void, Boolean> {
 
         private final ProgressDialog dialog = new ProgressDialog(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
-        int myprogress;
 
         //-----------------------------------------------------------------------------------------------------------------------------------
         protected Boolean doInBackground(Void... arg0) {
@@ -1066,7 +1062,7 @@ private void unRegisterReceiver(){
 
             Double longitud;
 
-            boolean retorno = false;
+            boolean retorno;
 
             boolean valueStreetFromGps = false;
 
@@ -1104,7 +1100,7 @@ private void unRegisterReceiver(){
 
                 if ((latitud.compareTo(Double.parseDouble("0.0")) == 0) && (longitud.compareTo(Double.parseDouble("0.0")) == 0)) {
                     // do nothing
-
+                    Log.w(TAG,"ParseDouble");
                 } else {
 
                     //check values from variable latitud and longitud
@@ -1188,7 +1184,17 @@ private void unRegisterReceiver(){
 
 
     }
+    //**********************************************************************class Async GeoLocation**************************************
+    public class AsyncGeoCoder extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... params) {
+            getGeoCodeFromLatLon(locationGral);
+            return null;
+        }
+    }
 
+
+    //***********************************************************************************************************************************
     
     //**********************************************************************class Async**************************************************
     private class AsynLocation extends AsyncTask<Void, Integer, Void> {
@@ -1203,21 +1209,22 @@ private void unRegisterReceiver(){
             try {
 
 
-                if (isGPS_enabled) {
-
-                    configGPS();
-
-                } else {
+                if (!isGPS_enabled) {
                     if (isNETWORK_enabled) {
 
                         configNET();
 
                     }
+                } else {
+
+                    configGPS();
+
                 }
 
 
                 if (locationGral != null) {
-                    getGeoCodeFromLatLon(locationGral);
+                    new AsyncGeoCoder().execute();
+                    //getGeoCodeFromLatLon(locationGral);
                 }
 
 
@@ -1266,7 +1273,8 @@ private void unRegisterReceiver(){
 
             if (location != null) {
 
-                getGeoCodeFromLatLon(location);
+               // getGeoCodeFromLatLon(location);
+                new AsyncGeoCoder().execute();
 
                 currentSaveLatitud = String.valueOf(location.getLatitude());
 

@@ -17,7 +17,9 @@
         android:layout_alignBaseline="@+id/chkEnable"
         android:layout_alignBottom="@+id/chkEnable"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/chkEnable"
+        android:layout_toEndOf="@+id/chkEnable"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

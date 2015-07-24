@@ -55,15 +55,15 @@
     <string name="text_15">15/0</string>
     <string name="text_30">30/0</string>
     <string name="text_save_config">Guardar configuración</string>
-    <string name="text_hint_number">Número de celular...</string>
-    <string name="text_hint_message">Mensaje de alerta...</string>
-    <string name="text_hint_number_config">Configurar número...</string>
-    <string name="text_hint_message_config">Configurar mensaje...</string>
-    <string name="text_hint_address_personal_config">Domicilio | Nom Ape...</string>
+    <string name="text_hint_number">Número de celular&#8230;</string>
+    <string name="text_hint_message">Mensaje de alerta&#8230;</string>
+    <string name="text_hint_number_config">Configurar número&#8230;</string>
+    <string name="text_hint_message_config">Configurar mensaje&#8230;</string>
+    <string name="text_hint_address_personal_config">Domicilio | Nom Ape&#8230;</string>
     <string name="text_send_alert_sms">Enviar sms alerta</string>
-    <string name="text_send_alert_wait">Por favor espere...</string>
-    <string name="text_save_alert_wait">Almacenando por favor espere...</string>
-    <string name="text_send_alert">Enviando sms alerta...</string>
+    <string name="text_send_alert_wait">Por favor espere&#8230;</string>
+    <string name="text_save_alert_wait">Almacenando por favor espere&#8230;</string>
+    <string name="text_send_alert">Enviando sms alerta&#8230;</string>
     <string name="text_change_config">Cambio de configuración</string>
     <string name="text_enabled_question_location">Habilitar localización por red o gps, desea hacerlo?</string>
     <string name="text_sms_send">SMS enviado</string>
@@ -82,14 +82,14 @@
     <string name="text_corret_operation">Operacion correcta</string>
     <string name="text_no_operation">No pasó nada</string>
     <string name="text_select_contact_at_the_least">Debe seleccionar contacto para borrar.</string>
-    <string name="text_input_number_phone">Botón alerta San Juan, ir a Contactos o Ajueste</string>
+    <string name="text_input_number_phone">Botón alerta San Juan, ir a contactos o ajuste</string>
     <string name="text_message_pretender">Tengo una emergencia necesito ayuda</string>
     <string name="text_alert_sj">ALERTA SAN JUAN</string>
-    <string name="text_send_message">Mensaje enviado...</string>
-    <string name="text_alert_send_msg">Botón alerta San Juan, ir a Contactos o Ajueste.</string>
+    <string name="text_send_message">Mensaje enviado&#8230;</string>
+    <string name="text_alert_send_msg">Botón alerta San Juan, ir a contactos o ajuste.</string>
     <string name="text_done">Hecho</string>
     <string name="text_requerid">requerido</string>
     <string name="text_contain_error">Hay errores de texto o faltan datos, verificar.</string>
-    <string name="text_inset_number_sms">Debe ingresar un número y mensaje para enviar sms de alerta.</string>    
+    <string name="text_inset_number_sms">Debe ingresar un número y mensaje para enviar sms de alerta.</string>
 
 </resources>

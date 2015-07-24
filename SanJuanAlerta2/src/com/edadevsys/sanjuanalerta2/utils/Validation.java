@@ -7,40 +7,41 @@ import java.util.regex.Pattern;
 public class Validation {
 
     //Regular Expression
-    private static final String MESSAGE_ALERT_REGEX = "(^[\\w\\S-])+([\\w\\s-.]){4,15}+$*";
-    private static final String DATA_PERSONAL_REGEX = "(^[\\w\\S-])+([\\w\\s-.])+$*";
+    private static final String MESSAGE_ALERT_REGEX = "(^[\\w\\S-])+([\\w\\s-]){4,15}+$*";
+    private static final String DATA_PERSONAL_REGEX = "(^[\\w\\S-])+([\\w\\s-])+$*";
 
     // Error Messages
     private static final String REQUIRED_MSG = "requerido";
     private static final String MESSAGE_ALERT_MSG = "Mensaje Alerta no permitido!!!";
-    private static final String DATA_PERSONAL_MSG = "Dato opcional inv·lido!!!";
-    private static EditText editText;
-    private static boolean required;
+    private static final String DATA_PERSONAL_MSG = "Dato opcional inv√°lido!!!";
+    // --Commented out by Inspection (13/07/2015 11:23):private static EditText editText;
+    private static boolean required = false;
+
 
     // call this method when you need to check email validation
-    public static boolean isMessageAlert(EditText editText, boolean required) {
-        return isValid(editText, MESSAGE_ALERT_REGEX, MESSAGE_ALERT_MSG, required);
+    public static boolean isMessageAlert(EditText editText) {
+        return isValid(editText);
     }
 
-    public static boolean isDataPersonal(EditText editText, boolean required) {
-        Validation.editText = editText;
-        Validation.required = required;
-        return isValidDataPersonal(editText, DATA_PERSONAL_REGEX, DATA_PERSONAL_MSG, required);
+    public static boolean isDataPersonal(EditText editText) {
+
+        Validation.required = false;
+        return isValidDataPersonal(editText, Validation.required);
     }
 
     // return true if the input field is valid, based on the parameter passed
-    private static boolean isValid(EditText editText, String regex, String errMsg, boolean required) {
+    private static boolean isValid(EditText editText) {
 
         String text = editText.getText().toString().trim();
         // clearing the error, if it was previously set by some other values
         editText.setError(null);
 
         // text required and editText is blank, so return false
-        if (required && !hasText(editText)) return false;
+        if (hasText(editText)) return false;
 
         // pattern doesn't match so returning false
-        if (required && !Pattern.matches(regex, text)) {
-            editText.setError(errMsg);
+        if (!Pattern.matches(Validation.MESSAGE_ALERT_REGEX, text)) {
+            editText.setError(Validation.MESSAGE_ALERT_MSG);
             return false;
         }
 
@@ -50,35 +51,35 @@ public class Validation {
     // check the input field has any text or not
     // return true if it contains text otherwise false
     public static boolean hasText(EditText editText) {
-
+        boolean retorno = true;
         String text = editText.getText().toString().trim();
         editText.setError(null);
 
         // length 0 means there is no text
         if (text.length() == 0) {
             editText.setError(REQUIRED_MSG);
-            return false;
+            retorno = false;
         }
 
-        return true;
+        return !retorno;
     }
 
-    public static boolean isValidDataPersonal(EditText editText, String regex, String errMsg, boolean required) {
+    private static boolean isValidDataPersonal(EditText editText, boolean required) {
         String text = editText.getText().toString().trim();
         // clearing the error, if it was previously set by some other values
         editText.setError(null);
 
         // pattern doesn't match so returning false
 
-        if (required || !hasTextDataPersonal(editText)) {
+        if (required ||!hasTextDataPersonal(editText)) {
 
             return false;
 
         }
 
-        if (required || !Pattern.matches(regex, text)) {
+        if (!Pattern.matches(Validation.DATA_PERSONAL_REGEX, text)) {
 
-            editText.setError(errMsg);
+            editText.setError(Validation.DATA_PERSONAL_MSG);
             return false;
         }
 

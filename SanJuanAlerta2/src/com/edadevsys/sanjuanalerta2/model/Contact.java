@@ -3,27 +3,22 @@ package com.edadevsys.sanjuanalerta2.model;
 public class Contact {
 
     //instance variable
-    int _id;
-    String _name;
-    String _phone_number;
+    private int _id;
+    private String _name;
+    private String _phone_number;
 
     // Empty Constructor
     public Contact() {
 
     }
 
-    // constructor
-    public Contact(int id, String name, String _phone_number) {
-        this._id = id;
-        this._name = name;
-        this._phone_number = _phone_number;
-    }
-
-    // constructor
-    public Contact(String name, String _phone_number) {
-        this._name = name;
-        this._phone_number = _phone_number;
-    }
+    // --Commented out by Inspection START (13/07/2015 11:23):
+//    // constructor
+//    public Contact(String name, String _phone_number) {
+//        this._name = name;
+//        this._phone_number = _phone_number;
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     // getting id
     public int getID() {

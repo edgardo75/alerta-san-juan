@@ -37,6 +37,7 @@
         android:id="@+id/itemContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textLabelAlerta"
         android:layout_alignLeft="@+id/textLabelAlerta"
         android:layout_alignParentTop="true"
         android:text="@string/text_sanjuan"
@@ -47,6 +48,7 @@
         android:id="@+id/textDataPersonal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textSend911"
         android:layout_alignLeft="@+id/textSend911"
         android:layout_below="@+id/textSend911"
         android:text="@string/text_title_long"
@@ -57,7 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textDataPersonal"
+        android:layout_alignStart="@+id/textLabelMovil"
         android:layout_alignLeft="@+id/textLabelMovil"
+        android:layout_alignEnd="@+id/imgViewMinGob"
         android:layout_alignRight="@+id/imgViewMinGob"
         android:layout_alignTop="@+id/textSend911"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -66,9 +70,11 @@
         android:id="@+id/textLocationAndStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textDataPersonal"
         android:layout_alignLeft="@+id/textDataPersonal"
         android:layout_below="@+id/imageBtnSms"
         android:layout_marginTop="10dp"
+        android:layout_toStartOf="@+id/imgViewMinGob"
         android:layout_toLeftOf="@+id/imgViewMinGob"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -77,7 +83,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textDataPersonal"
+        android:layout_alignStart="@+id/textLabelMovil"
         android:layout_alignLeft="@+id/textLabelMovil"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textDataPersonal"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -87,6 +95,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:contentDescription="@string/text_context_icon_mg"
         android:src="@drawable/boton_mg_icon" />
@@ -95,6 +104,7 @@
         android:id="@+id/imageViewSJ_Gob"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/imgViewMinGob"
         android:contentDescription="@string/text_context_icon_gov_sj"
@@ -105,6 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textLabelMovil"
+        android:layout_toStartOf="@+id/textLabelAlerta"
         android:layout_toLeftOf="@+id/textLabelAlerta"
         android:text="@string/text_title_lat"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -114,6 +125,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignLeft="@+id/textLabelMovil"
+        android:layout_alignStart="@+id/textLabelMovil"
         android:layout_centerVertical="true"
         android:contentDescription="@string/text_context_icon_button_principal"
         android:scaleType="fitXY"
@@ -124,6 +136,7 @@
         style="?android:attr/progressBarStyleLargeInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textLabelAlerta"
         android:layout_alignRight="@+id/textLabelAlerta"
         android:layout_below="@+id/textLabelAlerta"
         android:visibility="invisible" />

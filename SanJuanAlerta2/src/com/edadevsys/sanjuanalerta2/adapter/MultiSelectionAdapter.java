@@ -20,14 +20,14 @@ import java.util.ArrayList;
 
 public class MultiSelectionAdapter extends BaseAdapter {
 
-    Context context = null;
+    private Context context = null;
 
-    LayoutInflater mInflater = null;
+    private LayoutInflater mInflater = null;
 
-    ArrayList<Contact> multiSelectedList = null;
+    private ArrayList<Contact> multiSelectedList = null;
 
-    SparseBooleanArray mSparseBooleanArray = null;
-    OnCheckedChangeListener mChequedChangeListener = new OnCheckedChangeListener() {
+    private SparseBooleanArray mSparseBooleanArray = null;
+    private final OnCheckedChangeListener mChequedChangeListener = new OnCheckedChangeListener() {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -46,7 +46,7 @@ public class MultiSelectionAdapter extends BaseAdapter {
 
         mSparseBooleanArray = new SparseBooleanArray(0);
 
-        this.multiSelectedList = new ArrayList<Contact>();
+        this.multiSelectedList = new ArrayList<>();
 
         this.multiSelectedList = listSelected;
 
@@ -54,7 +54,7 @@ public class MultiSelectionAdapter extends BaseAdapter {
 
     public ArrayList<Contact> getChequedItems() {
 
-        ArrayList<Contact> mTempArrayContactSelected = new ArrayList<Contact>();
+        ArrayList<Contact> mTempArrayContactSelected = new ArrayList<>();
 
         int contactsSelectedCount = multiSelectedList.size();
 
@@ -70,11 +70,13 @@ public class MultiSelectionAdapter extends BaseAdapter {
         return mTempArrayContactSelected;
     }
 
-    public void unSelectChequedItems() {
-
-        mSparseBooleanArray.clear();
-
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public void unSelectChequedItems() {
+//
+//        mSparseBooleanArray.clear();
+//
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     @Override
     public int getCount() {

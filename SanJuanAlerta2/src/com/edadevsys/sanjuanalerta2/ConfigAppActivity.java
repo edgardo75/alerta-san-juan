@@ -15,26 +15,24 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.edadevsys.sanjuanalerta2.utils.Validation;
 
 @SuppressLint({"ValidFragment", "NewApi"})
 public class ConfigAppActivity extends Activity {
 
-    public static final String configSmsLocalFile = "conf1037";
+    private static final String configSmsLocalFile = "conf1037";
     private static final int TEXT_MCOUNTER = 15;
     private static final int TEXT_MCOUNTER1 = 30;
-    boolean flagTheNumber;
+    private boolean flagTheNumber;
     //global variables
     private EditText messageText = null;
     private EditText homeAndOrNameSurename = null;
-    private Button saveButton = null;
     private SharedPreferences saveLocal = null;
     private TextView mCouter = null;
     private TextView mCounter1 = null;
     private RadioButton radioEmergencyButton = null;
     private RadioGroup radioEmergencyGroup = null;
-    private RadioButton radioYes = null;
-    private RadioButton radioNo = null;
     private String msg = null;
     private String homeText = null;
 
@@ -64,7 +62,7 @@ public class ConfigAppActivity extends Activity {
         flagTheNumber = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
 
         // button send
-        saveButton = (Button) findViewById(R.id.btnConfig);
+        Button saveButton = (Button) findViewById(R.id.btnConfig);
 
         // editext
         messageText = (EditText) findViewById(R.id.messageConfigForPolice);
@@ -89,13 +87,13 @@ public class ConfigAppActivity extends Activity {
         radioEmergencyButton = (RadioButton) findViewById(seleted);
 
 
-        radioYes = (RadioButton) findViewById(R.id.radio_optyes);
+        RadioButton radioYes = (RadioButton) findViewById(R.id.radio_optyes);
 
-        radioNo = (RadioButton) findViewById(R.id.radio_optno);
+        RadioButton radioNo = (RadioButton) findViewById(R.id.radio_optno);
 
         // flag getPreference
         if (flagTheNumber) {
-            radioYes.setChecked(flagTheNumber);
+            radioYes.setChecked(true);
             radioNo.setChecked(false);
         } else {
             radioYes.setChecked(false);
@@ -171,7 +169,7 @@ public class ConfigAppActivity extends Activity {
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
 
-                Validation.isMessageAlert(messageText, true);
+                Validation.isMessageAlert(messageText);
 
             }
         });
@@ -199,7 +197,7 @@ public class ConfigAppActivity extends Activity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (Validation.hasTextDataPersonal(homeAndOrNameSurename)) {
-                    Validation.isDataPersonal(homeAndOrNameSurename, false);
+                    Validation.isDataPersonal(homeAndOrNameSurename);
                 }
 
             }
@@ -255,13 +253,13 @@ public class ConfigAppActivity extends Activity {
     private boolean checkValidation() {
         boolean ret = true;
 
-        if (!Validation.hasText(messageText)) ret = false;
+        if (Validation.hasText(messageText)) ret = false;
 
-        if (!Validation.isMessageAlert(messageText, true)) ret = false;
+        if (!Validation.isMessageAlert(messageText)) ret = false;
 
         if (Validation.hasTextDataPersonal(homeAndOrNameSurename)) {
 
-            if (!Validation.isDataPersonal(homeAndOrNameSurename, false)) ret = false;
+            if (!Validation.isDataPersonal(homeAndOrNameSurename)) ret = false;
 
         }
 

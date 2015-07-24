@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -43,16 +41,18 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static DataBaseHandler databaseinstance = null;
 
 
-    public DataBaseHandler(Context context) {
+    private DataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
 
 
-    public DataBaseHandler(Context context, String name, CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        // TODO Auto-generated constructor stub
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public DataBaseHandler(Context context, String name, CursorFactory factory, int version) {
+//        super(context, name, factory, version);
+//        // TODO Auto-generated constructor stub
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
 
     public static DataBaseHandler getDataBaseInstance(Context context) {
@@ -103,7 +103,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
             int count = cursor.getCount();
 
-            if (cursor != null && count > 0) {
+            if (count > 0) {
 
                 retorno = true;
 
@@ -113,6 +113,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         } catch (SQLiteConstraintException e) {
             Log.e(TAG, "The Number Exists class DataBaseHandler");
         }
+        assert cursor != null;
         cursor.close();
         db.close();
         return retorno;
@@ -122,53 +123,64 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     // Adding new contact
     public void addContact(Contact contact) {
-
-        SQLiteDatabase db = getWritableDatabase();
-
+        SQLiteDatabase db = null;
         try {
+             db = getWritableDatabase();
+            try {
 
 
-            ContentValues values = new ContentValues();
+                ContentValues values = new ContentValues();
 
-            values.put(KEY_NAME, contact.getName());
-            values.put(KEY_PH_NO, contact.getPhoneNumber());
+                values.put(KEY_NAME, contact.getName());
+                values.put(KEY_PH_NO, contact.getPhoneNumber());
 
-            db.insert(TABLE_CONTACTS, null, values);
+                db.insert(TABLE_CONTACTS, null, values);
 
+                db.close();
+
+
+            } catch (SQLiteConstraintException e) {
+                Log.e(TAG, "Error at the insert record");
+            }
+        }catch (Exception ignored){
+
+        }finally {
+            assert db != null;
             db.close();
+        }
 
-        } catch (SQLiteConstraintException e) {
-            Log.e(TAG, "Error at the insert record");
-        } finally {
-
-            db.close();
 
         }
 
-    }
 
-    // Getting single contact
-    public Contact getContact(int id) {
 
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_CONTACTS, new String[]{KEY_ID, KEY_NAME, KEY_PH_NO}, KEY_ID + "?=",
-                new String[]{String.valueOf(id)}, null, null, null);
-
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2));
-
-        return contact;
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    // Getting single contact
+//    public Contact getContact(int id) {
+//
+//        SQLiteDatabase db = getReadableDatabase();
+//
+//        Cursor cursor = db.query(TABLE_CONTACTS, new String[]{KEY_ID, KEY_NAME, KEY_PH_NO}, KEY_ID + "?=",
+//                new String[]{String.valueOf(id)}, null, null, null);
+//
+//        if (cursor != null)
+//            cursor.moveToFirst();
+//
+//        Contact contact = new Contact(Integer.parseInt(cursor.getString(0)),
+//                cursor.getString(1), cursor.getString(2));
+//
+//
+//        cursor.close();
+//
+//        return contact;
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     // Getting All Contacts
     @SuppressWarnings("finally")
     public List<Contact> getAllContacts() {
 
-        List<Contact> contactList = new ArrayList<Contact>();
+        List<Contact> contactList = new ArrayList<>();
 
         //Select all Query
         String selectQuery = "SELECT * FROM " + TABLE_CONTACTS;
@@ -223,21 +235,23 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return count;
     }
 
-    // Updating single contact
-    public int updateContact(Contact contact) {
-
-        SQLiteDatabase db = getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-
-        values.put(KEY_NAME, contact.getName());
-
-        values.put(KEY_PH_NO, contact.getPhoneNumber());
-
-        // updating row
-        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
-                new String[]{String.valueOf(contact.getID())});
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    // Updating single contact
+//    public int updateContact(Contact contact) {
+//
+//        SQLiteDatabase db = getWritableDatabase();
+//
+//        ContentValues values = new ContentValues();
+//
+//        values.put(KEY_NAME, contact.getName());
+//
+//        values.put(KEY_PH_NO, contact.getPhoneNumber());
+//
+//        // updating row
+//        return db.update(TABLE_CONTACTS, values, KEY_ID + " = ?",
+//                new String[]{String.valueOf(contact.getID())});
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
     // Deleting single contact
     public void deleteContact(Contact contact) {
@@ -265,18 +279,20 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean chekDataBase(Context context) {
-
-        SQLiteDatabase checkDB = null;
-
-        try {
-            checkDB = SQLiteDatabase.openDatabase(context.getDatabasePath(DATABASE_NAME).getPath(), null, SQLiteDatabase.OPEN_READONLY);
-            checkDB.close();
-        } catch (SQLiteException e) {
-            Log.e(TAG, "Failed to check existence DataBase");
-        }
-        return checkDB != null ? true : false;
-
-    }
+// --Commented out by Inspection START (13/07/2015 11:23):
+//    public boolean chekDataBase(Context context) {
+//
+//        SQLiteDatabase checkDB = null;
+//
+//        try {
+//            checkDB = SQLiteDatabase.openDatabase(context.getDatabasePath(DATABASE_NAME).getPath(), null, SQLiteDatabase.OPEN_READONLY);
+//            checkDB.close();
+//        } catch (SQLiteException e) {
+//            Log.e(TAG, "Failed to check existence DataBase");
+//        }
+//        return checkDB != null;
+//
+//    }
+// --Commented out by Inspection STOP (13/07/2015 11:23)
 
 }
