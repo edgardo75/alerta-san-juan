@@ -1,5 +1,6 @@
 package com.edadevsys.sanjuanalerta2;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -136,7 +137,8 @@ public class ContactsMainActivity extends Activity implements OnClickListener {
                 
     }
 
-	private void obtainContacts() {
+	@SuppressLint("Recycle")
+    private void obtainContacts() {
 		// TODO Auto-generated method stub
         Cursor phone;
 

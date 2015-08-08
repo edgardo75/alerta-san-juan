@@ -499,20 +499,7 @@ private void unRegisterReceiver(){
 
         try {
 
-           /* if (sendBroadCastReceiver != null) {
 
-                // Unregister receiver.
-                unregisterReceiver(sendBroadCastReceiver);
-
-                // The important bit here is to set the receiver
-                // to null once it has been unregistered.
-                sendBroadCastReceiver = null;
-
-            } else {
-
-                Log.w(TAG, "Do not unregister receiver as it was never registered");
-
-            }*/
         	unRegisterReceiver();
 
             if (configChangeRestore) {
@@ -1184,18 +1171,8 @@ private void unRegisterReceiver(){
 
 
     }
-    //**********************************************************************class Async GeoLocation**************************************
-    public class AsyncGeoCoder extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected Void doInBackground(Void... params) {
-            getGeoCodeFromLatLon(locationGral);
-            return null;
-        }
-    }
 
 
-    //***********************************************************************************************************************************
-    
     //**********************************************************************class Async**************************************************
     private class AsynLocation extends AsyncTask<Void, Integer, Void> {
 
@@ -1223,8 +1200,7 @@ private void unRegisterReceiver(){
 
 
                 if (locationGral != null) {
-                    new AsyncGeoCoder().execute();
-                    //getGeoCodeFromLatLon(locationGral);
+                    getGeoCodeFromLatLon(locationGral);
                 }
 
 
@@ -1273,8 +1249,7 @@ private void unRegisterReceiver(){
 
             if (location != null) {
 
-               // getGeoCodeFromLatLon(location);
-                new AsyncGeoCoder().execute();
+                getGeoCodeFromLatLon(location);
 
                 currentSaveLatitud = String.valueOf(location.getLatitude());
 

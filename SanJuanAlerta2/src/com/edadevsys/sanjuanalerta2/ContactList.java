@@ -31,6 +31,7 @@ public class ContactList extends Activity {
 
     private View view;
 
+    @SuppressWarnings("SameReturnValue")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -45,10 +46,7 @@ public class ContactList extends Activity {
 
 
     }// end onCreate
-    protected boolean onLongListItemClick(View v, int pos, long id) {
-        Log.i(TAG, "onLongListItemClick id=" + id);
-        return true;
-    }
+
     // init method to instantiate adapter
     private void init() {
 
