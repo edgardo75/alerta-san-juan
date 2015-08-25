@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidDomInspection -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.edadevsys.sanjuanalerta2"
     android:versionCode="17"
     android:versionName="1.7" >
@@ -14,6 +16,14 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
+
+    <!--suppress AndroidUnknownAttribute -->
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+    <!--suppress AndroidUnknownAttribute -->
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--suppress AndroidUnknownAttribute -->
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
@@ -25,14 +35,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow"
+            tools:ignore="UnusedAttribute" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ConfigAppActivity"
             android:label="@string/title_activity_config_app" >
@@ -44,13 +54,13 @@
         <activity
             android:name=".ContactList"
             android:label="@string/title_activity_contact_main_db_app"
-            android:uiOptions="splitActionBarWhenNarrow" >
+            android:uiOptions="splitActionBarWhenNarrow"
+            tools:ignore="UnusedAttribute" >
         </activity>
         <activity
             android:name=".MainActivityListContact"
             android:label="@string/title_activity_contact_main_list_app" >
         </activity>
-       
     </application>
 
 </manifest>
