@@ -9,23 +9,14 @@ package com.edadevsys.sanjuanalerta2;
 
 public final class R {
     public static final class attr {
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int metaButtonBarButtonStyle=0x7f010001;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int metaButtonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int black_overlay=0x7f040000;
         /**  Application theme. 
          */
-        public static final int custom_backgroud=0x7f040001;
-        public static final int custom_colorTextHint=0x7f040003;
-        public static final int custom_colorTextView=0x7f040002;
-        public static final int menubg=0x7f040004;
+        public static final int custom_backgroud=0x7f070000;
+        public static final int custom_colorTextHint=0x7f070002;
+        public static final int custom_colorTextView=0x7f070001;
+        public static final int menubg=0x7f070003;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -35,8 +26,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f040000;
+        public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
         public static final int boton_mg_icon=0x7f020000;
@@ -95,96 +86,96 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int menulistcontactapp=0x7f080001;
     }
     public static final class string {
-        public static final int action_come_back=0x7f06000d;
-        public static final int action_contacts=0x7f06000e;
-        public static final int action_delList=0x7f06000f;
-        public static final int action_del_all=0x7f060004;
-        public static final int action_del_row_selected=0x7f060003;
-        public static final int action_end=0x7f06000a;
-        public static final int action_end_activity=0x7f06000c;
-        public static final int action_help=0x7f06000b;
-        public static final int action_save_contact_selected=0x7f060011;
-        public static final int action_settings=0x7f060001;
-        public static final int action_sms_menu=0x7f060009;
-        public static final int action_view_contacts=0x7f06001e;
-        public static final int app_name=0x7f060000;
-        public static final int configFlagNumberString=0x7f060006;
-        public static final int configHomeUser=0x7f060007;
-        public static final int configMessageString=0x7f060005;
-        public static final int configNameAndSurenameUser=0x7f060008;
-        public static final int configNumberString=0x7f060002;
-        public static final int dialog_message_aviso_message=0x7f06001c;
-        public static final int dialog_message_aviso_message_add_contacts=0x7f060021;
-        public static final int dialog_message_borrado_all=0x7f060020;
-        public static final int dialog_message_borrado_select=0x7f06001f;
-        public static final int dialog_title=0x7f06001d;
-        public static final int emergency_number_text=0x7f06001b;
-        public static final int no=0x7f060017;
-        public static final int ok=0x7f060016;
-        public static final int text_15=0x7f060030;
-        public static final int text_30=0x7f060031;
-        public static final int text_address_config=0x7f060038;
-        public static final int text_admin_contacts=0x7f06002a;
-        public static final int text_alert_main=0x7f060027;
-        public static final int text_alert_send_msg=0x7f060055;
-        public static final int text_alert_sj=0x7f060053;
-        public static final int text_change_config=0x7f06003f;
-        public static final int text_config_app=0x7f06002d;
-        public static final int text_contain_error=0x7f060058;
-        public static final int text_context_icon_button_principal=0x7f060024;
-        public static final int text_context_icon_gov_sj=0x7f060026;
-        public static final int text_context_icon_mg=0x7f060025;
-        public static final int text_corret_operation=0x7f06004e;
-        public static final int text_current_location=0x7f060041;
-        public static final int text_data_personal=0x7f06003a;
-        public static final int text_del_all=0x7f060023;
-        public static final int text_del_selected=0x7f060022;
-        public static final int text_done=0x7f060056;
-        public static final int text_enabled_question_location=0x7f060040;
-        public static final int text_hint_address_personal_config=0x7f06003b;
-        public static final int text_hint_message=0x7f060034;
-        public static final int text_hint_message_config=0x7f060036;
-        public static final int text_hint_number=0x7f060033;
-        public static final int text_hint_number_config=0x7f060035;
-        public static final int text_input_number_phone=0x7f060051;
-        public static final int text_inset_number_sms=0x7f060059;
-        public static final int text_list_fill=0x7f06004a;
-        public static final int text_location_new=0x7f060045;
-        public static final int text_menu_main=0x7f060018;
-        public static final int text_message=0x7f06002f;
-        public static final int text_message_pretender=0x7f060052;
-        public static final int text_moviles=0x7f060029;
-        public static final int text_name_config=0x7f060039;
-        public static final int text_no_load_contacts=0x7f060049;
-        public static final int text_no_operation=0x7f06004f;
-        public static final int text_no_phone_contact=0x7f06004d;
-        public static final int text_null_pdu=0x7f060046;
-        public static final int text_number=0x7f06002e;
-        public static final int text_radio_off=0x7f060047;
-        public static final int text_requerid=0x7f060057;
-        public static final int text_sanjuan=0x7f060028;
-        public static final int text_save_alert_wait=0x7f06003e;
-        public static final int text_save_config=0x7f060032;
-        public static final int text_saved=0x7f06004b;
-        public static final int text_saved_allready=0x7f06004c;
-        public static final int text_select_contact=0x7f06002b;
-        public static final int text_select_contact_at_the_least=0x7f060050;
-        public static final int text_send_alert=0x7f06003d;
-        public static final int text_send_alert_sms=0x7f060037;
-        public static final int text_send_alert_wait=0x7f06003c;
-        public static final int text_send_all_sms=0x7f060048;
-        public static final int text_send_message=0x7f060054;
-        public static final int text_sms_failure=0x7f060043;
-        public static final int text_sms_no_service=0x7f060044;
-        public static final int text_sms_send=0x7f060042;
-        public static final int text_title_lat=0x7f060019;
-        public static final int text_title_long=0x7f06001a;
-        public static final int text_view_contact=0x7f06002c;
-        public static final int title_activity_config_app=0x7f060012;
-        public static final int title_activity_contact_main_app=0x7f060013;
-        public static final int title_activity_contact_main_db_app=0x7f060014;
-        public static final int title_activity_contact_main_list_app=0x7f060015;
-        public static final int title_activity_sms=0x7f060010;
+        public static final int action_come_back=0x7f05000f;
+        public static final int action_contacts=0x7f05000d;
+        public static final int action_delList=0x7f05000e;
+        public static final int action_del_all=0x7f050003;
+        public static final int action_del_row_selected=0x7f050002;
+        public static final int action_end=0x7f05000a;
+        public static final int action_end_activity=0x7f05000c;
+        public static final int action_help=0x7f05000b;
+        public static final int action_save_contact_selected=0x7f050011;
+        public static final int action_settings=0x7f050001;
+        public static final int action_sms_menu=0x7f050009;
+        public static final int action_view_contacts=0x7f05001d;
+        public static final int app_name=0x7f050000;
+        public static final int configFlagNumberString=0x7f050008;
+        public static final int configHomeUser=0x7f050006;
+        public static final int configMessageString=0x7f050005;
+        public static final int configNameAndSurenameUser=0x7f050007;
+        public static final int configNumberString=0x7f050004;
+        public static final int dialog_message_aviso_message=0x7f05001c;
+        public static final int dialog_message_aviso_message_add_contacts=0x7f050021;
+        public static final int dialog_message_borrado_all=0x7f050020;
+        public static final int dialog_message_borrado_select=0x7f05001f;
+        public static final int dialog_title=0x7f05001e;
+        public static final int emergency_number_text=0x7f05001b;
+        public static final int no=0x7f050017;
+        public static final int ok=0x7f050016;
+        public static final int text_15=0x7f050033;
+        public static final int text_30=0x7f050034;
+        public static final int text_address_config=0x7f050030;
+        public static final int text_admin_contacts=0x7f05002a;
+        public static final int text_alert_main=0x7f050027;
+        public static final int text_alert_send_msg=0x7f050055;
+        public static final int text_alert_sj=0x7f050053;
+        public static final int text_change_config=0x7f05003f;
+        public static final int text_config_app=0x7f05002d;
+        public static final int text_contain_error=0x7f050058;
+        public static final int text_context_icon_button_principal=0x7f050024;
+        public static final int text_context_icon_gov_sj=0x7f050026;
+        public static final int text_context_icon_mg=0x7f050025;
+        public static final int text_corret_operation=0x7f05004e;
+        public static final int text_current_location=0x7f050045;
+        public static final int text_data_personal=0x7f050032;
+        public static final int text_del_all=0x7f050023;
+        public static final int text_del_selected=0x7f050022;
+        public static final int text_done=0x7f050056;
+        public static final int text_enabled_question_location=0x7f050040;
+        public static final int text_hint_address_personal_config=0x7f05003a;
+        public static final int text_hint_message=0x7f050037;
+        public static final int text_hint_message_config=0x7f050039;
+        public static final int text_hint_number=0x7f050036;
+        public static final int text_hint_number_config=0x7f050038;
+        public static final int text_input_number_phone=0x7f050051;
+        public static final int text_inset_number_sms=0x7f050059;
+        public static final int text_list_fill=0x7f05004a;
+        public static final int text_location_new=0x7f050044;
+        public static final int text_menu_main=0x7f050018;
+        public static final int text_message=0x7f05002f;
+        public static final int text_message_pretender=0x7f050052;
+        public static final int text_moviles=0x7f050029;
+        public static final int text_name_config=0x7f050031;
+        public static final int text_no_load_contacts=0x7f050049;
+        public static final int text_no_operation=0x7f05004f;
+        public static final int text_no_phone_contact=0x7f05004d;
+        public static final int text_null_pdu=0x7f050046;
+        public static final int text_number=0x7f05002e;
+        public static final int text_radio_off=0x7f050047;
+        public static final int text_requerid=0x7f050057;
+        public static final int text_sanjuan=0x7f050028;
+        public static final int text_save_alert_wait=0x7f05003d;
+        public static final int text_save_config=0x7f050035;
+        public static final int text_saved=0x7f05004b;
+        public static final int text_saved_allready=0x7f05004c;
+        public static final int text_select_contact=0x7f05002b;
+        public static final int text_select_contact_at_the_least=0x7f050050;
+        public static final int text_send_alert=0x7f05003e;
+        public static final int text_send_alert_sms=0x7f05003b;
+        public static final int text_send_alert_wait=0x7f05003c;
+        public static final int text_send_all_sms=0x7f050048;
+        public static final int text_send_message=0x7f050054;
+        public static final int text_sms_failure=0x7f050042;
+        public static final int text_sms_no_service=0x7f050043;
+        public static final int text_sms_send=0x7f050041;
+        public static final int text_title_lat=0x7f050019;
+        public static final int text_title_long=0x7f05001a;
+        public static final int text_view_contact=0x7f05002c;
+        public static final int title_activity_config_app=0x7f050012;
+        public static final int title_activity_contact_main_app=0x7f050013;
+        public static final int title_activity_contact_main_db_app=0x7f050014;
+        public static final int title_activity_contact_main_list_app=0x7f050015;
+        public static final int title_activity_sms=0x7f050010;
     }
     public static final class style {
         /** 
@@ -207,57 +198,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f060000;
         /**     <item name="android:panelColorBackground">#FF0000</item> 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f060001;
         /**  Backward-compatible version of ?android:attr/buttonBarStyle 
          */
-        public static final int ButtonBar=0x7f070003;
+        public static final int ButtonBar=0x7f060003;
         /**  Backward-compatible version of ?android:attr/buttonBarButtonStyle 
          */
-        public static final int ButtonBarButton=0x7f070004;
-        public static final int FullscreenActionBarStyle=0x7f070005;
-        public static final int FullscreenTheme=0x7f070002;
+        public static final int ButtonBarButton=0x7f060004;
+        public static final int FullscreenActionBarStyle=0x7f060005;
+        public static final int FullscreenTheme=0x7f060002;
     }
-    public static final class styleable {
-        /**  Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. 
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ButtonBarContainerTheme_metaButtonBarButtonStyle com.edadevsys.sanjuanalerta2:metaButtonBarButtonStyle}</code></td><td></td></tr>
-           <tr><td><code>{@link #ButtonBarContainerTheme_metaButtonBarStyle com.edadevsys.sanjuanalerta2:metaButtonBarStyle}</code></td><td></td></tr>
-           </table>
-           @see #ButtonBarContainerTheme_metaButtonBarButtonStyle
-           @see #ButtonBarContainerTheme_metaButtonBarStyle
-         */
-        public static final int[] ButtonBarContainerTheme = {
-            0x7f010000, 0x7f010001
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.edadevsys.sanjuanalerta2.R.attr#metaButtonBarButtonStyle}
-          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.edadevsys.sanjuanalerta2:metaButtonBarButtonStyle
-        */
-        public static final int ButtonBarContainerTheme_metaButtonBarButtonStyle = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.edadevsys.sanjuanalerta2.R.attr#metaButtonBarStyle}
-          attribute's value can be found in the {@link #ButtonBarContainerTheme} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.edadevsys.sanjuanalerta2:metaButtonBarStyle
-        */
-        public static final int ButtonBarContainerTheme_metaButtonBarStyle = 0;
-    };
 }

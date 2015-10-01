@@ -1,5 +1,14 @@
 package com.edadevsys.sanjuanalerta2;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Locale;
+
+import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
+import com.edadevsys.sanjuanalerta2.model.Contact;
+import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,7 +36,6 @@ import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Data;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
 import android.telephony.SmsManager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -43,15 +51,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
-import com.edadevsys.sanjuanalerta2.model.Contact;
-import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
-
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Locale;
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
@@ -102,12 +101,17 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "on resume");
+        
         setContentView(R.layout.fragment_main);
 
         saveLocal = getSharedPreferences(configSmsLocalFile, 0);
         
-        new Thread(new Runnable() {
+        
+        setSharedPreference();
+        getSharePreference();
+        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
+        LocationPhones.createHashMapLocality();
+        /*new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -117,7 +121,7 @@ public class MainActivity extends Activity {
 		        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
 		        LocationPhones.createHashMapLocality();
 			}
-		}).start();		
+		}).start();	*/	
         
 
         //***************************************************************************************
@@ -316,7 +320,7 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         super.onResume();
 
-        Log.d(TAG, "on resume");
+        
         //****************************************
         //*******************************
         
@@ -396,7 +400,7 @@ public class MainActivity extends Activity {
     protected void onPause() {
 
         super.onPause();
-        Log.d(TAG, "on resume");
+        
         unRegisterReceiver();
         if (locationListener != null) {
 
@@ -421,7 +425,7 @@ private void unRegisterReceiver(){
     protected void onStop() {
 
         super.onStop();
-        Log.d(TAG, "on stop");
+        
         try {
 
            /* if (sendBroadCastReceiver != null) {
@@ -456,7 +460,7 @@ private void unRegisterReceiver(){
 
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle  savedInstanceState) {
+    protected void onRestoreInstanceState(Bundle  savedInstanceState) {
         // TODO Auto-generated method stub
 
         super.onRestoreInstanceState(savedInstanceState);
@@ -478,7 +482,7 @@ private void unRegisterReceiver(){
 
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState) {
         // TODO Auto-generated method stub
 
         outState.putString(STATE_LATITUD, currentSaveLatitud);
@@ -559,7 +563,7 @@ private void unRegisterReceiver(){
                         menuBackGround();
                         return view;
                     } catch (InflateException | ClassNotFoundException e) {
-                        Log.d(TAG, e.getMessage());
+                        Log.w(TAG, e.getMessage());
                     }
                 }
                 return null;
