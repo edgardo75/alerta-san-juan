@@ -1,14 +1,5 @@
 package com.edadevsys.sanjuanalerta2;
 
-import java.io.IOException;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Locale;
-
-import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
-import com.edadevsys.sanjuanalerta2.model.Contact;
-import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -51,6 +42,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.edadevsys.sanjuanalerta2.database.DataBaseHandler;
+import com.edadevsys.sanjuanalerta2.model.Contact;
+import com.edadevsys.sanjuanalerta2.utils.LocationPhones;
+
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Locale;
 
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {

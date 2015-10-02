@@ -1,6 +1,5 @@
 package com.edadevsys.sanjuanalerta2.utils;
 
-import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
