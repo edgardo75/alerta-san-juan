@@ -8,6 +8,7 @@
     <string name="configNumberString">number</string>
     <string name="configMessageString">message</string>
     <string name="configHomeUser">home</string>
+    <string name="configMessagePredeter">Emergencia</string>
     <string name="configNameAndSurenameUser">name</string>
     <string name="configFlagNumberString">flag</string>
     <string name="action_sms_menu">Enviar sms</string>
@@ -26,8 +27,8 @@
     <string name="ok">Si</string>
     <string name="no">No</string>
     <string name="text_menu_main">Atras</string>
-    <string name="text_title_lat">Lat.</string>
-    <string name="text_title_long">Long.</string>
+    <string name="text_title_lat">Lat</string>
+    <string name="text_title_long">Long</string>
     <string name="emergency_number_text">Envío al 911</string>
     <string name="dialog_message_aviso_message">Aviso</string>
     <string name="action_view_contacts">Ver</string>

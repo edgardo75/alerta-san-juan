@@ -1,5 +1,6 @@
 package com.edadevsys.sanjuanalerta2;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Address;
 import android.location.Criteria;
@@ -52,6 +54,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Locale;
 
+@SuppressWarnings("ALL")
 @SuppressLint("NewApi")
 public class MainActivity extends Activity {
 
@@ -64,11 +67,11 @@ public class MainActivity extends Activity {
     private static final String THE_NUMBER_EMERGENCY_POLICE = "2644845346";
     //private static final String THE_NUMBER_EMERGENCY_POLICE = "5556";
     private static final String THE_URL_LOCATION = "http://maps.google.com/?q=";
-    private static final String THE_MESSAGE_PREDETER = "Emergencia";
-    private static final String ALERTA_SAN_JUAN = "ALERTA SAN JUAN";
+    //private static final String THE_MESSAGE_PREDETER = "Emergencia";
+    //private static final String ALERTA_SAN_JUAN = "ALERTA SAN JUAN";
     private static final long MINIMUM_TIME = 35000; // 35 segundos
     private static final long MINIMUM_DISTANCE = 10; // 0 metros
-    private final static String SENT = "Mensaje Enviado....";
+    //private final static String SENT = "Mensaje Enviado....";
     private static final int PICK_CONTACT_REQUEST = 1;
     private static DataBaseHandler db = null;
     private LocationManager locationManager;
@@ -101,12 +104,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.fragment_main);
 
         saveLocal = getSharedPreferences(configSmsLocalFile, 0);
-        
-        
+
+
         setSharedPreference();
         getSharePreference();
         db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
@@ -121,31 +124,24 @@ public class MainActivity extends Activity {
 		        db = DataBaseHandler.getDataBaseInstance(MainActivity.this);
 		        LocationPhones.createHashMapLocality();
 			}
-		}).start();	*/	
-        
+		}).start();	*/
+
 
         //***************************************************************************************
         initLocation();
         initUI();
-        
-	        
-        	
+
+
         addListenerOnButtonAlert();
 
         showAlertDialogCondition();
-       
-        
-        
-        
-        
 
-       
 
     }
 
 
     private void getSharePreference() {
-    	 // the local variable obtain from sharedPreference
+        // the local variable obtain from sharedPreference
 
         theNumber = saveLocal.getString(getString(R.string.configNumberString), "");
 
@@ -154,10 +150,10 @@ public class MainActivity extends Activity {
         theFlagPoliceSendSMS = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
 
         theHomeUser = saveLocal.getString(getString(R.string.configHomeUser), "");
-		
-	}
 
-	private void showAlertDialogCondition() {
+    }
+
+    private void showAlertDialogCondition() {
         //*******************************
         if (provider != null) {
 
@@ -221,7 +217,7 @@ public class MainActivity extends Activity {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_ESCAPE) {
                     //Do Nothing
-                    Log.w(TAG,"KeyCode");
+                    Log.w(TAG, "KeyCode");
                 }
 
                 return false;
@@ -299,7 +295,7 @@ public class MainActivity extends Activity {
         textLatitud = (TextView) findViewById(R.id.textLat);
 
         textLongitud = (TextView) findViewById(R.id.textLong);
-        
+
         textLocationStreet = (TextView) findViewById(R.id.textLocationAndStreet);
 
         progressbar = (ProgressBar) findViewById(R.id.progressLocation);
@@ -320,24 +316,28 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         super.onResume();
 
-        
+
         //****************************************
         //*******************************
-        
-				if (locationListener != null) {
-					
-		            locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
-		
-		        }
-				
-		sendBroadCastReceiver();    
-        
+
+        if (locationListener != null) {
+
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
+            locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
+
+        }
+
+        sendBroadCastReceiver();
+
         //********************************************************************
 
         //******************************
         //***************************************
 
-        registerReceiver(sendBroadCastReceiver, new IntentFilter(SENT));
+        registerReceiver(sendBroadCastReceiver, new IntentFilter(getString(R.string.text_sms_send)));
 
 
         //***************************************************************************************************
@@ -346,9 +346,14 @@ public class MainActivity extends Activity {
 
     }
 
-    private void sendBroadCastReceiver(){
-    	
-    	sendBroadCastReceiver = new BroadcastReceiver() {
+
+    private int checkSelfPermission(String accessFineLocation) {
+        return MainActivity.this.checkCallingOrSelfPermission(accessFineLocation);
+    }
+
+    private void sendBroadCastReceiver() {
+
+        sendBroadCastReceiver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -396,36 +401,43 @@ public class MainActivity extends Activity {
             }
         };
     }
+
     @Override
     protected void onPause() {
 
         super.onPause();
-        
+
         unRegisterReceiver();
         if (locationListener != null) {
 
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                return;
+            }
             locationManager.removeUpdates(locationListener);
-            
+
 
         }
     }
-private void unRegisterReceiver(){
-	if (sendBroadCastReceiver != null) {
 
-        // Unregister receiver.
-        unregisterReceiver(sendBroadCastReceiver);
+    private void unRegisterReceiver() {
+        if (sendBroadCastReceiver != null) {
 
-        // The important bit here is to set the receiver
-        // to null once it has been unregistered.
-        sendBroadCastReceiver = null;
+            // Unregister receiver.
+            unregisterReceiver(sendBroadCastReceiver);
 
+            // The important bit here is to set the receiver
+            // to null once it has been unregistered.
+            sendBroadCastReceiver = null;
+
+        }
     }
-}
+
     @Override
     protected void onStop() {
 
         super.onStop();
-        
+
         try {
 
            /* if (sendBroadCastReceiver != null) {
@@ -438,29 +450,33 @@ private void unRegisterReceiver(){
                 sendBroadCastReceiver = null;
 
             }*/
-        	unRegisterReceiver();
+            unRegisterReceiver();
 
         } catch (Exception e) {
 
             Log.e(TAG, "Error in OnStop method in class MainActivity");
 
-        } finally {
+        }
 
-        	
-					if (locationListener != null) {
-						
-		                locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
-		
-		            }
-					
-			    
+
+            if (locationListener != null) {
+
+                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
+                locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria, false), MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
+
+
+
+
         }
 
     }
 
 
     @Override
-    protected void onRestoreInstanceState(Bundle  savedInstanceState) {
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
 
         super.onRestoreInstanceState(savedInstanceState);
@@ -504,7 +520,7 @@ private void unRegisterReceiver(){
         try {
 
 
-        	unRegisterReceiver();
+            unRegisterReceiver();
 
             if (configChangeRestore) {
 
@@ -518,13 +534,17 @@ private void unRegisterReceiver(){
 
             Log.e(TAG, "Error in OnDestroy method");
 
-        } finally {
+        }
 
             if (locationListener != null) {
 
+                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
                 locationManager.removeUpdates(locationListener);
 
-            }
+
 
 
             db.close();
@@ -540,7 +560,7 @@ private void unRegisterReceiver(){
 
         getMenuInflater().inflate(R.menu.main, menu);
         setMenuBackground();
-        
+
         return true;
     }
 
@@ -648,7 +668,7 @@ private void unRegisterReceiver(){
         try {
 
             //Pending message get broadcast
-            PendingIntent sentPI = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent(SENT), PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent sentPI = PendingIntent.getBroadcast(MainActivity.this, 0, new Intent(getString(R.string.text_send_message)), PendingIntent.FLAG_UPDATE_CURRENT);
 
             SmsManager sms = SmsManager.getDefault();
 
@@ -671,30 +691,25 @@ private void unRegisterReceiver(){
             @Override
             public void onClick(View v) {
 
-               
-            		
-						
-					
-							// TODO Auto-generated method stub
-							sendMessageThePoliceAndContact();
-					
-					
 
-			                
+                // TODO Auto-generated method stub
+                sendMessageThePoliceAndContact();
+
 
             }
         });
 
     }
-    private void sendMessageThePoliceAndContact(){
-    	
-    	//number of message send and the message text default
-		
+
+    private void sendMessageThePoliceAndContact() {
+
+        //number of message send and the message text default
+
         if ((theNumber.length() > 0 && theMessage.length() > 0)) {
 
             // Flag indicating whether or not send a text message
 
-            if (theFlagPoliceSendSMS || db.getContactsCount() > 0 || phoneDepartment.length()>0) {
+            if (theFlagPoliceSendSMS || db.getContactsCount() > 0 || phoneDepartment.length() > 0) {
 
                 // begin asyn task
 
@@ -713,7 +728,7 @@ private void unRegisterReceiver(){
                     Toast.LENGTH_LONG).show();
 
         }
-    	
+
     }
 
     private void setSharedPreference() {
@@ -726,9 +741,11 @@ private void unRegisterReceiver(){
         Boolean theFlagPoliceSendSMSTheNumber = saveLocal.getBoolean(getString(R.string.configFlagNumberString), false);
 
 
-        if ((theNumber != null ? theNumber.length() : 0) == 0 && (theMessage != null ? theMessage.length() : 0) == 0) {
+        //if ((theNumber != null ? theNumber.length() : 0) == 0 && (theMessage.length()) == 0) {
+        if (theMessage.length() == 0) {
 
-            editor.putString(getString(R.string.configMessageString), THE_MESSAGE_PREDETER);
+            //editor.putString(getString(R.string.configMessageString), THE_MESSAGE_PREDETER);
+            editor.putString(getString(R.string.configMessageString), getString(R.string.configMessagePredeter));
             editor.putString(getString(R.string.configNumberString), THE_NUMBER_EMERGENCY_POLICE);
         } else {
 
@@ -743,7 +760,7 @@ private void unRegisterReceiver(){
             editor.putBoolean(getString(R.string.configFlagNumberString), false);
         }
 
-        if ((theHome != null ? theHome.length() : 0) == 0) {
+        if ((theHome.length()) == 0) {
             editor.putString(getString(R.string.configHomeUser), theHome);
         }
         editor.commit();
@@ -781,6 +798,10 @@ private void unRegisterReceiver(){
             @Override
             public void run() {
                 // TODO Auto-generated method stub
+                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
             }
         });
@@ -799,6 +820,10 @@ private void unRegisterReceiver(){
             @Override
             public void run() {
                 // TODO Auto-generated method stub
+                if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MINIMUM_TIME, MINIMUM_DISTANCE, locationListener);
             }
         });
@@ -1064,17 +1089,17 @@ private void unRegisterReceiver(){
             try {
 
 
-                latitud = Double.parseDouble(textLatitud.getText().toString().replace(",", "."));
+                latitud = Double.parseDouble(currentSaveLatitud.replace(",", "."));
 
-                longitud = Double.parseDouble(textLongitud.getText().toString().replace(",", "."));
+                longitud = Double.parseDouble(currentSaveLongitud.replace(",", "."));
 
-                street = textLocationStreet.getText().toString();
+                street = currentSaveStreet;
 
 
                 //Armo message
 
 
-                strMessageBuilder.append(ALERTA_SAN_JUAN).append("\n").append(theMessage).append(" ");
+                strMessageBuilder.append(getString(R.string.app_name)).append("\n").append(theMessage).append(" ");
 
                 //check value street obtain from Geocoder
                 if (street.length() > 0) {
