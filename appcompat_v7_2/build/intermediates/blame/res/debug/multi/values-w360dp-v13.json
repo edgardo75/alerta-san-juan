@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\build\\intermediates\\res\\merged\\debug\\values-w360dp-v13\\values-w360dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-w360dp\\dimens.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 925,
+                        "endColumn": 54,
+                        "endOffset": 975
+                    }
+                }
+            }
+        ]
+    }
+]

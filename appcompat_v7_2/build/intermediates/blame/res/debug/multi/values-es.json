@@ -1,0 +1,254 @@
+[
+    {
+        "outputFile": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\build\\intermediates\\res\\merged\\debug\\values-es\\values-es.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 116,
+                    "endOffset": 167
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 774,
+                        "endColumn": 116,
+                        "endOffset": 886
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 172,
+                    "endColumn": 112,
+                    "endOffset": 280
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 891,
+                        "endColumn": 112,
+                        "endOffset": 999
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 285,
+                    "endColumn": 107,
+                    "endOffset": 388
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1004,
+                        "endColumn": 107,
+                        "endOffset": 1107
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 393,
+                    "endColumn": 84,
+                    "endOffset": 473
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 689,
+                        "endColumn": 84,
+                        "endOffset": 769
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 478,
+                    "endColumn": 100,
+                    "endOffset": 574
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1761,
+                        "endColumn": 100,
+                        "endOffset": 1857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 579,
+                    "endColumn": 127,
+                    "endOffset": 702
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1633,
+                        "endColumn": 127,
+                        "endOffset": 1756
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 707,
+                    "endColumn": 106,
+                    "endOffset": 809
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1311,
+                        "endColumn": 106,
+                        "endOffset": 1413
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 814,
+                    "endColumn": 99,
+                    "endOffset": 909
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1211,
+                        "endColumn": 99,
+                        "endOffset": 1306
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 914,
+                    "endColumn": 98,
+                    "endOffset": 1008
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1112,
+                        "endColumn": 98,
+                        "endOffset": 1206
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1013,
+                    "endColumn": 107,
+                    "endOffset": 1116
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1418,
+                        "endColumn": 107,
+                        "endOffset": 1521
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1121,
+                    "endColumn": 106,
+                    "endOffset": 1223
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1526,
+                        "endColumn": 106,
+                        "endOffset": 1628
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1228,
+                    "endColumn": 106,
+                    "endOffset": 1330
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1984,
+                        "endColumn": 106,
+                        "endOffset": 2086
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1335,
+                    "endColumn": 121,
+                    "endOffset": 1452
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-es\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1862,
+                        "endColumn": 121,
+                        "endOffset": 1979
+                    }
+                }
+            }
+        ]
+    }
+]

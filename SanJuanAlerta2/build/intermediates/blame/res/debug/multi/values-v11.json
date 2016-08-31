@@ -1,0 +1,70 @@
+[
+    {
+        "outputFile": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\values-v11\\values-v11.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 5,
+                    "endColumn": 12,
+                    "endOffset": 264
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\values-v11\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 183,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 269,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 369
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\values-v11\\styles.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 710,
+                        "endLine": 20,
+                        "endColumn": 12,
+                        "endOffset": 812
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 374,
+                    "endLine": 14,
+                    "endColumn": 12,
+                    "endOffset": 668
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\values-v11\\styles.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 403,
+                        "endLine": 16,
+                        "endColumn": 12,
+                        "endOffset": 702
+                    }
+                }
+            }
+        ]
+    }
+]

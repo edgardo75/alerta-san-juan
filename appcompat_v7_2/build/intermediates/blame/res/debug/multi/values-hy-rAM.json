@@ -1,0 +1,254 @@
+[
+    {
+        "outputFile": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\build\\intermediates\\res\\merged\\debug\\values-hy-rAM\\values-hy-rAM.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 102,
+                    "endOffset": 153
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 779,
+                        "endColumn": 102,
+                        "endOffset": 877
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 158,
+                    "endColumn": 100,
+                    "endOffset": 254
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 882,
+                        "endColumn": 100,
+                        "endOffset": 978
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 259,
+                    "endColumn": 109,
+                    "endOffset": 364
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 983,
+                        "endColumn": 109,
+                        "endOffset": 1088
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 369,
+                    "endColumn": 89,
+                    "endOffset": 454
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 689,
+                        "endColumn": 89,
+                        "endOffset": 774
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 459,
+                    "endColumn": 105,
+                    "endOffset": 560
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1738,
+                        "endColumn": 105,
+                        "endOffset": 1839
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 565,
+                    "endColumn": 114,
+                    "endOffset": 675
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1623,
+                        "endColumn": 114,
+                        "endOffset": 1733
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 680,
+                    "endColumn": 106,
+                    "endOffset": 782
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1299,
+                        "endColumn": 106,
+                        "endOffset": 1401
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 787,
+                    "endColumn": 106,
+                    "endOffset": 889
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1192,
+                        "endColumn": 106,
+                        "endOffset": 1294
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 894,
+                    "endColumn": 98,
+                    "endOffset": 988
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1093,
+                        "endColumn": 98,
+                        "endOffset": 1187
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 993,
+                    "endColumn": 109,
+                    "endOffset": 1098
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1406,
+                        "endColumn": 109,
+                        "endOffset": 1511
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1103,
+                    "endColumn": 106,
+                    "endOffset": 1205
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1516,
+                        "endColumn": 106,
+                        "endOffset": 1618
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1210,
+                    "endColumn": 100,
+                    "endOffset": 1306
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1964,
+                        "endColumn": 100,
+                        "endOffset": 2060
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1311,
+                    "endColumn": 119,
+                    "endOffset": 1426
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-hy-rAM\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1844,
+                        "endColumn": 119,
+                        "endOffset": 1959
+                    }
+                }
+            }
+        ]
+    }
+]

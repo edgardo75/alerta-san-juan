@@ -1,0 +1,254 @@
+[
+    {
+        "outputFile": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\build\\intermediates\\res\\merged\\debug\\values-ka-rGE\\values-ka-rGE.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 108,
+                    "endOffset": 159
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 777,
+                        "endColumn": 108,
+                        "endOffset": 881
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 164,
+                    "endColumn": 103,
+                    "endOffset": 263
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 886,
+                        "endColumn": 103,
+                        "endOffset": 985
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 268,
+                    "endColumn": 110,
+                    "endOffset": 374
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 990,
+                        "endColumn": 110,
+                        "endOffset": 1096
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 379,
+                    "endColumn": 87,
+                    "endOffset": 462
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 689,
+                        "endColumn": 87,
+                        "endOffset": 772
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 467,
+                    "endColumn": 104,
+                    "endOffset": 567
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1749,
+                        "endColumn": 104,
+                        "endOffset": 1849
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 572,
+                    "endColumn": 112,
+                    "endOffset": 680
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1636,
+                        "endColumn": 112,
+                        "endOffset": 1744
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 685,
+                    "endColumn": 112,
+                    "endOffset": 793
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1306,
+                        "endColumn": 112,
+                        "endOffset": 1414
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 798,
+                    "endColumn": 106,
+                    "endOffset": 900
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1199,
+                        "endColumn": 106,
+                        "endOffset": 1301
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 905,
+                    "endColumn": 97,
+                    "endOffset": 998
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1101,
+                        "endColumn": 97,
+                        "endOffset": 1194
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1003,
+                    "endColumn": 112,
+                    "endOffset": 1111
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1419,
+                        "endColumn": 112,
+                        "endOffset": 1527
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1116,
+                    "endColumn": 103,
+                    "endOffset": 1215
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 1532,
+                        "endColumn": 103,
+                        "endOffset": 1631
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1220,
+                    "endColumn": 103,
+                    "endOffset": 1319
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1976,
+                        "endColumn": 103,
+                        "endOffset": 2075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1324,
+                    "endColumn": 121,
+                    "endOffset": 1441
+                },
+                "from": {
+                    "file": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\appcompat_v7_2\\res\\values-ka-rGE\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1854,
+                        "endColumn": 121,
+                        "endOffset": 1971
+                    }
+                }
+            }
+        ]
+    }
+]

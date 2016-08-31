@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\boton_sj_icon.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-xhdpi\\boton_sj_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_btn_alert_logo.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-xhdpi\\ic_btn_alert_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\boton_mg_icon.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-xhdpi\\boton_mg_icon.png"
+    }
+]

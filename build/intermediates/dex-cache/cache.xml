@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Edgardo\git\alerta-san-juan\SanJuanAlerta2\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5896b0a4e377ac4242eb2bc785220c1c4fc052f4">
+        <dex dex="C:\Users\Edgardo\git\alerta-san-juan\SanJuanAlerta2\build\intermediates\pre-dexed\debug\android-support-v4_7774ecb8debbe3ebc4b5fac3d9dcf37d29b3a1b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Edgardo\git\alerta-san-juan\appcompat_v7_2\libs\android-support-v7-appcompat.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3d62997c154488738d1367406fb7ac6074f992e2">
+        <dex dex="C:\Users\Edgardo\git\alerta-san-juan\appcompat_v7_2\build\intermediates\pre-dexed\debug\android-support-v7-appcompat_85a195ecb02febce15bb1c89aeaa2baa174985fd.jar" />
+    </item>
+    <item
+        jar="C:\Users\Edgardo\git\alerta-san-juan\appcompat_v7_2\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5896b0a4e377ac4242eb2bc785220c1c4fc052f4">
+        <dex dex="C:\Users\Edgardo\git\alerta-san-juan\appcompat_v7_2\build\intermediates\pre-dexed\debug\android-support-v4_4bd7312118f6d03cfaac68e9df17a0931fed004e.jar" />
+    </item>
+
+</items>

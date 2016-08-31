@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_del_select_row"
+        android:orderInCategory="5"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_del_row_selected"
+        tools:ignore="UnusedAttribute" />
+    <item
+        android:id="@+id/menu_del_all"
+        android:orderInCategory="6"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_del_all"
+        tools:ignore="UnusedAttribute" />
+    <item
+        android:id="@+id/menu_return"
+        android:orderInCategory="7"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_come_back"
+        tools:ignore="UnusedAttribute" />
+
+</menu>

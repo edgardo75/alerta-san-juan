@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\boton_sj_icon.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-ldpi\\boton_sj_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\boton_mg_icon.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-ldpi\\boton_mg_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_btn_alert_logo.png",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\drawable-ldpi\\ic_btn_alert_logo.png"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\fragment_config_app.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\fragment_config_app.xml"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\row.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\row.xml"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\contact_main_activity.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\contact_main_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_main_list.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\activity_main_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_list_contact_db.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\activity_list_contact_db.xml"
+    },
+    {
+        "merged": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\fragment_main.xml",
+        "source": "C:\\Users\\Edgardo\\git\\alerta-san-juan\\SanJuanAlerta2\\res\\layout-xlarge\\fragment_main.xml"
+    }
+]
